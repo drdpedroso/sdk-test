@@ -3,15 +3,13 @@
 import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource spaces', () => {
   test('update: only required params', async () => {
-    const responsePromise = headlessClientSDK.notificationPreferences.spaces.update('in_app', 0, {
-      choice: 'all',
-    });
+    const responsePromise = client.notificationPreferences.spaces.update('in_app', 0, { choice: 'all' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,8 +20,6 @@ describe('resource spaces', () => {
   });
 
   test('update: required and optional params', async () => {
-    const response = await headlessClientSDK.notificationPreferences.spaces.update('in_app', 0, {
-      choice: 'all',
-    });
+    const response = await client.notificationPreferences.spaces.update('in_app', 0, { choice: 'all' });
   });
 });

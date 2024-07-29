@@ -3,13 +3,13 @@
 import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource spaces', () => {
   test('retrieve', async () => {
-    const responsePromise = headlessClientSDK.spaces.retrieve(0);
+    const responsePromise = client.spaces.retrieve(0);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,13 +21,13 @@ describe('resource spaces', () => {
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(headlessClientSDK.spaces.retrieve(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.spaces.retrieve(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
       HeadlessClientSDK.NotFoundError,
     );
   });
 
   test('list', async () => {
-    const responsePromise = headlessClientSDK.spaces.list();
+    const responsePromise = client.spaces.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -39,13 +39,13 @@ describe('resource spaces', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(headlessClientSDK.spaces.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.spaces.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       HeadlessClientSDK.NotFoundError,
     );
   });
 
   test('join', async () => {
-    const responsePromise = headlessClientSDK.spaces.join(0);
+    const responsePromise = client.spaces.join(0);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -57,13 +57,13 @@ describe('resource spaces', () => {
 
   test('join: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(headlessClientSDK.spaces.join(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.spaces.join(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
       HeadlessClientSDK.NotFoundError,
     );
   });
 
   test('leave', async () => {
-    const responsePromise = headlessClientSDK.spaces.leave(0);
+    const responsePromise = client.spaces.leave(0);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -75,7 +75,7 @@ describe('resource spaces', () => {
 
   test('leave: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(headlessClientSDK.spaces.leave(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.spaces.leave(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
       HeadlessClientSDK.NotFoundError,
     );
   });
