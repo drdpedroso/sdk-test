@@ -32,10 +32,10 @@ describe('resource profile', () => {
       headlessClientSDK.profile.update(
         {
           community_member: {
-            name: 'name',
-            avatar: 'avatar',
-            headline: 'headline',
-            time_zone: 'time_zone',
+            name: 'string',
+            avatar: 'string',
+            headline: 'string',
+            time_zone: 'string',
             preferences: {
               messaging_enabled: true,
               visible_in_member_directory: true,
@@ -45,8 +45,8 @@ describe('resource profile', () => {
               {
                 id: 0,
                 profile_field_id: 0,
-                text: 'text',
-                textarea: 'textarea',
+                text: 'string',
+                textarea: 'string',
                 community_member_choices_attributes: [
                   { id: 0, profile_field_choice_id: 0, _destroy: true },
                   { id: 0, profile_field_choice_id: 0, _destroy: true },
@@ -56,8 +56,8 @@ describe('resource profile', () => {
               {
                 id: 0,
                 profile_field_id: 0,
-                text: 'text',
-                textarea: 'textarea',
+                text: 'string',
+                textarea: 'string',
                 community_member_choices_attributes: [
                   { id: 0, profile_field_choice_id: 0, _destroy: true },
                   { id: 0, profile_field_choice_id: 0, _destroy: true },
@@ -67,8 +67,8 @@ describe('resource profile', () => {
               {
                 id: 0,
                 profile_field_id: 0,
-                text: 'text',
-                textarea: 'textarea',
+                text: 'string',
+                textarea: 'string',
                 community_member_choices_attributes: [
                   { id: 0, profile_field_choice_id: 0, _destroy: true },
                   { id: 0, profile_field_choice_id: 0, _destroy: true },

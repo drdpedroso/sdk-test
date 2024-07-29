@@ -30,7 +30,7 @@ describe('resource spaceNotificationDetails', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       headlessClientSDK.spaceNotificationDetails.list(
-        { space_ids: 'space_ids' },
+        { space_ids: 'string' },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
