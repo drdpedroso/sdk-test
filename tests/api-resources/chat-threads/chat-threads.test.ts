@@ -9,7 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource chatThreads', () => {
   test('retrieve', async () => {
-    const responsePromise = headlessClientSDK.chatThreads.retrieve('string');
+    const responsePromise = headlessClientSDK.chatThreads.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource chatThreads', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.chatThreads.retrieve('string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.chatThreads.retrieve('id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
