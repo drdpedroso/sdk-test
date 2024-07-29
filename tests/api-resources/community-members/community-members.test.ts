@@ -34,7 +34,7 @@ describe('resource communityMembers', () => {
           page: 0,
           per_page: 0,
           search_after: [0, 0, 0],
-          search_text: 'string',
+          search_text: 'search_text',
           sort: 'alphabetical',
           space_id: 0,
         },

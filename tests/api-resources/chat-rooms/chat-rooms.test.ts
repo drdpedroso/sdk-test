@@ -9,9 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource chatRooms', () => {
   test('create: only required params', async () => {
-    const responsePromise = headlessClientSDK.chatRooms.create({
-      chat_room: { body: 'string', kind: 'string' },
-    });
+    const responsePromise = headlessClientSDK.chatRooms.create({ chat_room: { body: 'body', kind: 'kind' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,16 +22,16 @@ describe('resource chatRooms', () => {
   test('create: required and optional params', async () => {
     const response = await headlessClientSDK.chatRooms.create({
       chat_room: {
-        body: 'string',
+        body: 'body',
         rich_text_body: {},
-        kind: 'string',
+        kind: 'kind',
         community_member_ids: ['string', 'string', 'string'],
       },
     });
   });
 
   test('retrieve', async () => {
-    const responsePromise = headlessClientSDK.chatRooms.retrieve('string');
+    const responsePromise = headlessClientSDK.chatRooms.retrieve('uuid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -46,7 +44,7 @@ describe('resource chatRooms', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.chatRooms.retrieve('string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.chatRooms.retrieve('uuid', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
@@ -76,7 +74,7 @@ describe('resource chatRooms', () => {
   });
 
   test('markAllAsRead', async () => {
-    const responsePromise = headlessClientSDK.chatRooms.markAllAsRead('string');
+    const responsePromise = headlessClientSDK.chatRooms.markAllAsRead('uuid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -89,7 +87,7 @@ describe('resource chatRooms', () => {
   test('markAllAsRead: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.chatRooms.markAllAsRead('string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.chatRooms.markAllAsRead('uuid', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 });
