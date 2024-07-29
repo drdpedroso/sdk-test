@@ -9,7 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource invitationLinks', () => {
   test('join', async () => {
-    const responsePromise = headlessClientSDK.invitationLinks.join('token');
+    const responsePromise = headlessClientSDK.invitationLinks.join('string');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource invitationLinks', () => {
   test('join: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.invitationLinks.join('token', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.invitationLinks.join('string', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 });

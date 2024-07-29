@@ -9,7 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource search', () => {
   test('list: only required params', async () => {
-    const responsePromise = headlessClientSDK.search.list({ search_text: 'search_text' });
+    const responsePromise = headlessClientSDK.search.list({ search_text: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,10 +20,6 @@ describe('resource search', () => {
   });
 
   test('list: required and optional params', async () => {
-    const response = await headlessClientSDK.search.list({
-      search_text: 'search_text',
-      page: 0,
-      per_page: 0,
-    });
+    const response = await headlessClientSDK.search.list({ search_text: 'string', page: 0, per_page: 0 });
   });
 });
