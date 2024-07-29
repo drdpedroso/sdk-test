@@ -107,7 +107,6 @@ export class HeadlessClientSDK extends Core.APIClient {
   posts: API.Posts = new API.Posts(this);
   communityLinks: API.CommunityLinks = new API.CommunityLinks(this);
   communityMembers: API.CommunityMembers = new API.CommunityMembers(this);
-  communityMember: API.CommunityMember = new API.CommunityMember(this);
   cookies: API.Cookies = new API.Cookies(this);
   courses: API.Courses = new API.Courses(this);
   events: API.Events = new API.Events(this);
@@ -212,11 +211,9 @@ export namespace HeadlessClientSDK {
   export import CommunityLinks = API.CommunityLinks;
 
   export import CommunityMembers = API.CommunityMembers;
-  export import CommunityMemberListParams = API.CommunityMemberListParams;
-
-  export import CommunityMember = API.CommunityMember;
   export import CurrentCommunityMember = API.CurrentCommunityMember;
   export import MemberDeactivated = API.MemberDeactivated;
+  export import CommunityMemberListParams = API.CommunityMemberListParams;
 
   export import Cookies = API.Cookies;
   export import CookiesDestroyed = API.CookiesDestroyed;
