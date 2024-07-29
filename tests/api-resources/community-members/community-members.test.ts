@@ -8,6 +8,24 @@ const headlessClientSDK = new HeadlessClientSDK({
 });
 
 describe('resource communityMembers', () => {
+  test('retrieve', async () => {
+    const responsePromise = headlessClientSDK.communityMembers.retrieve();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      headlessClientSDK.communityMembers.retrieve({ path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
+  });
+
   test('list', async () => {
     const responsePromise = headlessClientSDK.communityMembers.list();
     const rawResponse = await responsePromise.asResponse();
@@ -40,6 +58,24 @@ describe('resource communityMembers', () => {
         },
         { path: '/_stainless_unknown_path' },
       ),
+    ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
+  });
+
+  test('deactivate', async () => {
+    const responsePromise = headlessClientSDK.communityMembers.deactivate();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('deactivate: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      headlessClientSDK.communityMembers.deactivate({ path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 });

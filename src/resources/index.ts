@@ -13,11 +13,15 @@ export {
 export { ChatThread, ChatThreads, ChatThreadListParams } from './chat-threads/chat-threads';
 export { Comments } from './comments/comments';
 export { CommunityLinks } from './community-links';
-export { CommunityMembers, CommunityMemberListParams } from './community-members/community-members';
+export {
+  CommunityMembers,
+  CurrentCommunityMember,
+  MemberDeactivated,
+  CommunityMemberListParams,
+} from './community-members/community-members';
 export { CookiesDestroyed, CookiesGenerated, Cookies } from './cookies';
 export { Courses } from './courses/courses';
 export { CreateReactionResponse, ReactionCreateParams, Reactions } from './reactions';
-export { CurrentCommunityMember, MemberDeactivated, CommunityMember } from './community-member';
 export { Events } from './events/events';
 export {
   FlaggedContentCreateResponse,
