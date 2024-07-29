@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Headless Client SDK REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.headless-client-sdk.com](https://docs.headless-client-sdk.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found [on docs.headless-client-sdk.com](https://docs.headless-client-sdk.com). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -28,7 +28,7 @@ import HeadlessClientSDK from 'headless-client-sdk';
 const headlessClientSDK = new HeadlessClientSDK();
 
 async function main() {
-  const bookmark = await headlessClientSDK.bookmarks.create({ bookmark_type: 'REPLACE_ME', record_id: 123 });
+  const bookmark = await headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 2 });
 
   console.log(bookmark.id);
 }
@@ -47,7 +47,7 @@ import HeadlessClientSDK from 'headless-client-sdk';
 const headlessClientSDK = new HeadlessClientSDK();
 
 async function main() {
-  const params: HeadlessClientSDK.BookmarkCreateParams = { bookmark_type: 'REPLACE_ME', record_id: 123 };
+  const params: HeadlessClientSDK.BookmarkCreateParams = { bookmark_type: 'post', record_id: 2 };
   const bookmark: HeadlessClientSDK.Bookmark = await headlessClientSDK.bookmarks.create(params);
 }
 
@@ -66,7 +66,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const bookmark = await headlessClientSDK.bookmarks
-    .create({ bookmark_type: 'REPLACE_ME', record_id: 123 })
+    .create({ bookmark_type: 'post', record_id: 2 })
     .catch(async (err) => {
       if (err instanceof HeadlessClientSDK.APIError) {
         console.log(err.status); // 400
@@ -110,7 +110,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 });
 
 // Or, configure per-request:
-await headlessClientSDK.bookmarks.create({ bookmark_type: 'REPLACE_ME', record_id: 123 }, {
+await headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 2 }, {
   maxRetries: 5,
 });
 ```
@@ -127,7 +127,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 });
 
 // Override per-request:
-await headlessClientSDK.bookmarks.create({ bookmark_type: 'REPLACE_ME', record_id: 123 }, {
+await headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 2 }, {
   timeout: 5 * 1000,
 });
 ```
@@ -149,13 +149,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const headlessClientSDK = new HeadlessClientSDK();
 
 const response = await headlessClientSDK.bookmarks
-  .create({ bookmark_type: 'REPLACE_ME', record_id: 123 })
+  .create({ bookmark_type: 'post', record_id: 2 })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: bookmark, response: raw } = await headlessClientSDK.bookmarks
-  .create({ bookmark_type: 'REPLACE_ME', record_id: 123 })
+  .create({ bookmark_type: 'post', record_id: 2 })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(bookmark.id);
@@ -263,7 +263,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 // Override per-request:
 await headlessClientSDK.bookmarks.create(
-  { bookmark_type: 'REPLACE_ME', record_id: 123 },
+  { bookmark_type: 'post', record_id: 2 },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
@@ -287,6 +287,14 @@ We are keen for your feedback; please open an [issue](https://www.github.com/drd
 TypeScript >= 4.5 is supported.
 
 The following runtimes are supported:
+
+- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
+- Deno v1.28.0 or higher, using `import HeadlessClientSDK from "npm:headless-client-sdk"`.
+- Bun 1.0 or later.
+- Cloudflare Workers.
+- Vercel Edge Runtime.
+- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
+- Nitro v2.6 or greater.
 
 Note that React Native is not supported at this time.
 
