@@ -3,13 +3,13 @@
 import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource profile', () => {
   test('update', async () => {
-    const responsePromise = headlessClientSDK.profile.update();
+    const responsePromise = client.profile.update();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource profile', () => {
 
   test('update: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(headlessClientSDK.profile.update({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.profile.update({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       HeadlessClientSDK.NotFoundError,
     );
   });
@@ -29,7 +29,7 @@ describe('resource profile', () => {
   test('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.profile.update(
+      client.profile.update(
         {
           community_member: {
             name: 'name',

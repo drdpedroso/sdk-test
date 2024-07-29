@@ -3,13 +3,13 @@
 import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource posts', () => {
   test('create: only required params', async () => {
-    const responsePromise = headlessClientSDK.posts.create({ path_space_id: 0 });
+    const responsePromise = client.posts.create({ path_space_id: 0 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,7 +20,7 @@ describe('resource posts', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await headlessClientSDK.posts.create({
+    const response = await client.posts.create({
       path_space_id: 0,
       gallery_attributes: {
         images_attributes: [
@@ -47,7 +47,7 @@ describe('resource posts', () => {
   });
 
   test('update: only required params', async () => {
-    const responsePromise = headlessClientSDK.posts.update(0, { path_space_id: 0 });
+    const responsePromise = client.posts.update(0, { path_space_id: 0 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -58,7 +58,7 @@ describe('resource posts', () => {
   });
 
   test('update: required and optional params', async () => {
-    const response = await headlessClientSDK.posts.update(0, {
+    const response = await client.posts.update(0, {
       path_space_id: 0,
       gallery_attributes: {
         images_attributes: [
