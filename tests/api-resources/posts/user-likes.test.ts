@@ -9,7 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource userLikes', () => {
   test('create', async () => {
-    const responsePromise = headlessClientSDK.posts.userLikes.create('string');
+    const responsePromise = headlessClientSDK.posts.userLikes.create('post_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,12 +22,12 @@ describe('resource userLikes', () => {
   test('create: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.posts.userLikes.create('string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.posts.userLikes.create('post_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = headlessClientSDK.posts.userLikes.list('string');
+    const responsePromise = headlessClientSDK.posts.userLikes.list('post_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -40,7 +40,7 @@ describe('resource userLikes', () => {
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.posts.userLikes.list('string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.posts.userLikes.list('post_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
@@ -48,7 +48,7 @@ describe('resource userLikes', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       headlessClientSDK.posts.userLikes.list(
-        'string',
+        'post_id',
         { page: 0, per_page: 0 },
         { path: '/_stainless_unknown_path' },
       ),
@@ -56,7 +56,7 @@ describe('resource userLikes', () => {
   });
 
   test('delete', async () => {
-    const responsePromise = headlessClientSDK.posts.userLikes.delete('string');
+    const responsePromise = headlessClientSDK.posts.userLikes.delete('post_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -69,7 +69,7 @@ describe('resource userLikes', () => {
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.posts.userLikes.delete('string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.posts.userLikes.delete('post_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 });
