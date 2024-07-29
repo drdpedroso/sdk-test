@@ -28,7 +28,7 @@ import HeadlessClientSDK from 'headless-client-sdk';
 const client = new HeadlessClientSDK();
 
 async function main() {
-  const bookmark = await headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 2 });
+  const bookmark = await client.bookmarks.create({ bookmark_type: 'post', record_id: 2 });
 
   console.log(bookmark.id);
 }
@@ -48,7 +48,7 @@ const client = new HeadlessClientSDK();
 
 async function main() {
   const params: HeadlessClientSDK.BookmarkCreateParams = { bookmark_type: 'post', record_id: 2 };
-  const bookmark: HeadlessClientSDK.Bookmark = await headlessClientSDK.bookmarks.create(params);
+  const bookmark: HeadlessClientSDK.Bookmark = await client.bookmarks.create(params);
 }
 
 main();
@@ -65,7 +65,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const bookmark = await headlessClientSDK.bookmarks
+  const bookmark = await client.bookmarks
     .create({ bookmark_type: 'post', record_id: 2 })
     .catch(async (err) => {
       if (err instanceof HeadlessClientSDK.APIError) {
@@ -110,7 +110,7 @@ const client = new HeadlessClientSDK({
 });
 
 // Or, configure per-request:
-await headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 2 }, {
+await client.bookmarks.create({ bookmark_type: 'post', record_id: 2 }, {
   maxRetries: 5,
 });
 ```
@@ -127,7 +127,7 @@ const client = new HeadlessClientSDK({
 });
 
 // Override per-request:
-await headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 2 }, {
+await client.bookmarks.create({ bookmark_type: 'post', record_id: 2 }, {
   timeout: 5 * 1000,
 });
 ```
@@ -148,13 +148,11 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new HeadlessClientSDK();
 
-const response = await headlessClientSDK.bookmarks
-  .create({ bookmark_type: 'post', record_id: 2 })
-  .asResponse();
+const response = await client.bookmarks.create({ bookmark_type: 'post', record_id: 2 }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: bookmark, response: raw } = await headlessClientSDK.bookmarks
+const { data: bookmark, response: raw } = await client.bookmarks
   .create({ bookmark_type: 'post', record_id: 2 })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
@@ -262,7 +260,7 @@ const client = new HeadlessClientSDK({
 });
 
 // Override per-request:
-await headlessClientSDK.bookmarks.create(
+await client.bookmarks.create(
   { bookmark_type: 'post', record_id: 2 },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
