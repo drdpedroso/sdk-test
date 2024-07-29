@@ -9,7 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource advancedSearch', () => {
   test('search: only required params', async () => {
-    const responsePromise = headlessClientSDK.advancedSearch.search({ query: 'string' });
+    const responsePromise = headlessClientSDK.advancedSearch.search({ query: 'query' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,8 +21,8 @@ describe('resource advancedSearch', () => {
 
   test('search: required and optional params', async () => {
     const response = await headlessClientSDK.advancedSearch.search({
-      query: 'string',
-      mention_scope: 'string',
+      query: 'query',
+      mention_scope: 'mention_scope',
       page: 0,
       per_page: 0,
       space_id: 0,

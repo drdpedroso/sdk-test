@@ -9,7 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource replies', () => {
   test('create', async () => {
-    const responsePromise = headlessClientSDK.comments.replies.create('string', {});
+    const responsePromise = headlessClientSDK.comments.replies.create('comment_id', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,7 +20,7 @@ describe('resource replies', () => {
   });
 
   test('retrieve', async () => {
-    const responsePromise = headlessClientSDK.comments.replies.retrieve('string', 'string');
+    const responsePromise = headlessClientSDK.comments.replies.retrieve('comment_id', 'id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -33,7 +33,7 @@ describe('resource replies', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.comments.replies.retrieve('string', 'string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.comments.replies.retrieve('comment_id', 'id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
@@ -67,7 +67,7 @@ describe('resource replies', () => {
   });
 
   test('delete', async () => {
-    const responsePromise = headlessClientSDK.comments.replies.delete('string', 'string');
+    const responsePromise = headlessClientSDK.comments.replies.delete('comment_id', 'id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -80,7 +80,7 @@ describe('resource replies', () => {
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.comments.replies.delete('string', 'string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.comments.replies.delete('comment_id', 'id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 });

@@ -24,22 +24,22 @@ describe('resource posts', () => {
       path_space_id: 0,
       gallery_attributes: {
         images_attributes: [
-          { id: 0, signed_id: 'string', width: 0, height: 0 },
-          { id: 0, signed_id: 'string', width: 0, height: 0 },
-          { id: 0, signed_id: 'string', width: 0, height: 0 },
+          { id: 0, signed_id: 'signed_id', width: 0, height: 0 },
+          { id: 0, signed_id: 'signed_id', width: 0, height: 0 },
+          { id: 0, signed_id: 'signed_id', width: 0, height: 0 },
         ],
       },
       is_comments_enabled: true,
       is_liking_enabled: true,
-      slug: 'string',
+      slug: 'slug',
       body_space_id: 0,
       tiptap_body: {
         body: {
-          type: 'string',
+          type: 'type',
           content: [
-            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
-            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
-            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
+            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
+            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
+            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
           ],
         },
       },
@@ -62,22 +62,22 @@ describe('resource posts', () => {
       path_space_id: 0,
       gallery_attributes: {
         images_attributes: [
-          { id: 0, image: 'string', position: 0 },
-          { id: 0, image: 'string', position: 0 },
-          { id: 0, image: 'string', position: 0 },
+          { id: 0, image: 'image', position: 0 },
+          { id: 0, image: 'image', position: 0 },
+          { id: 0, image: 'image', position: 0 },
         ],
       },
       is_comments_enabled: true,
       is_liking_enabled: true,
-      slug: 'string',
+      slug: 'slug',
       body_space_id: 0,
       tiptap_body: {
         body: {
-          type: 'string',
+          type: 'type',
           content: [
-            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
-            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
-            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
+            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
+            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
+            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
           ],
         },
       },
