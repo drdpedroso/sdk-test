@@ -32,7 +32,7 @@ describe('resource rooms', () => {
       headlessClientSDK.liveStreams.rooms.create(
         {
           access_type: 'open',
-          description: 'string',
+          description: 'description',
           invited_entities_ids: {
             members_ids: [0, 0, 0],
             spaces_ids: [0, 0, 0],
@@ -41,10 +41,10 @@ describe('resource rooms', () => {
           },
           limit_url_sharing: true,
           mute_on_join: true,
-          name: 'string',
+          name: 'name',
           recording_enabled: true,
           room_type: 'stream',
-          slug: 'string',
+          slug: 'slug',
           view_type: 'speaker_view',
         },
         { path: '/_stainless_unknown_path' },
