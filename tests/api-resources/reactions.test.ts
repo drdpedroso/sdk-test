@@ -9,7 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource reactions', () => {
   test('create: only required params', async () => {
-    const responsePromise = headlessClientSDK.reactions.create({ chat_room_message: 0, emoji: 'emoji' });
+    const responsePromise = headlessClientSDK.reactions.create({ chat_room_message: 0, emoji: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,6 +20,6 @@ describe('resource reactions', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await headlessClientSDK.reactions.create({ chat_room_message: 0, emoji: 'emoji' });
+    const response = await headlessClientSDK.reactions.create({ chat_room_message: 0, emoji: 'string' });
   });
 });

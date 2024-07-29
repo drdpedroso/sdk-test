@@ -94,7 +94,7 @@ describe('resource notifications', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       headlessClientSDK.notifications.markAllAsRead(
-        { notification_type: 'notification_type', parent_notifiable: { type: 'type', id: 1 } },
+        { notification_type: 'string', parent_notifiable: { type: 'string', id: 1 } },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);

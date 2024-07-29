@@ -12,8 +12,8 @@ describe('resource flaggedContents', () => {
     const responsePromise = headlessClientSDK.flaggedContents.create({
       flagged_content: {
         flagged_contentable_id: 0,
-        flagged_contentable_type: 'flagged_contentable_type',
-        reported_reason_type: 'reported_reason_type',
+        flagged_contentable_type: 'string',
+        reported_reason_type: 'string',
         reported_reason_body: 'harassment',
       },
     });
@@ -30,8 +30,8 @@ describe('resource flaggedContents', () => {
     const response = await headlessClientSDK.flaggedContents.create({
       flagged_content: {
         flagged_contentable_id: 0,
-        flagged_contentable_type: 'flagged_contentable_type',
-        reported_reason_type: 'reported_reason_type',
+        flagged_contentable_type: 'string',
+        reported_reason_type: 'string',
         reported_reason_body: 'harassment',
       },
     });

@@ -22,20 +22,20 @@ describe('resource posts', () => {
   test('create: required and optional params', async () => {
     const response = await headlessClientSDK.spaces.posts.create({
       path_space_id: 0,
-      body: 'body',
-      cover_image: 'cover_image',
+      body: 'string',
+      cover_image: 'string',
       is_comments_enabled: true,
       is_liking_enabled: true,
-      name: 'name',
-      slug: 'slug',
+      name: 'string',
+      slug: 'string',
       body_space_id: 0,
       tiptap_body: {
         body: {
-          type: 'type',
+          type: 'string',
           content: [
-            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
-            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
-            { type: 'type', text: 'text', marks: [{}, {}, {}], attrs: {} },
+            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
+            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
+            { type: 'string', text: 'string', marks: [{}, {}, {}], attrs: {} },
           ],
         },
       },
