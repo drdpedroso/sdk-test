@@ -9,7 +9,7 @@ const headlessClientSDK = new HeadlessClientSDK({
 
 describe('resource chatRoomParticipants', () => {
   test('list', async () => {
-    const responsePromise = headlessClientSDK.messages.chatRoomParticipants.list('string');
+    const responsePromise = headlessClientSDK.messages.chatRoomParticipants.list('chat_room_uuid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,9 @@ describe('resource chatRoomParticipants', () => {
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomParticipants.list('string', { path: '/_stainless_unknown_path' }),
+      headlessClientSDK.messages.chatRoomParticipants.list('chat_room_uuid', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
@@ -30,7 +32,7 @@ describe('resource chatRoomParticipants', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       headlessClientSDK.messages.chatRoomParticipants.list(
-        'string',
+        'chat_room_uuid',
         { page: 0, per_page: 0 },
         { path: '/_stainless_unknown_path' },
       ),

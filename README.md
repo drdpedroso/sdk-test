@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Headless Client SDK REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on docs.headless-client-sdk.com](https://docs.headless-client-sdk.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.headless-client-sdk.com](https://docs.headless-client-sdk.com). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -25,7 +25,7 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import HeadlessClientSDK from 'headless-client-sdk';
 
-const headlessClientSDK = new HeadlessClientSDK();
+const client = new HeadlessClientSDK();
 
 async function main() {
   const bookmark = await headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 2 });
@@ -44,7 +44,7 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import HeadlessClientSDK from 'headless-client-sdk';
 
-const headlessClientSDK = new HeadlessClientSDK();
+const client = new HeadlessClientSDK();
 
 async function main() {
   const params: HeadlessClientSDK.BookmarkCreateParams = { bookmark_type: 'post', record_id: 2 };
@@ -105,7 +105,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   maxRetries: 0, // default is 2
 });
 
@@ -122,7 +122,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -146,7 +146,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const headlessClientSDK = new HeadlessClientSDK();
+const client = new HeadlessClientSDK();
 
 const response = await headlessClientSDK.bookmarks
   .create({ bookmark_type: 'post', record_id: 2 })
@@ -257,7 +257,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
@@ -287,14 +287,6 @@ We are keen for your feedback; please open an [issue](https://www.github.com/drd
 TypeScript >= 4.5 is supported.
 
 The following runtimes are supported:
-
-- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import HeadlessClientSDK from "npm:headless-client-sdk"`.
-- Bun 1.0 or later.
-- Cloudflare Workers.
-- Vercel Edge Runtime.
-- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
-- Nitro v2.6 or greater.
 
 Note that React Native is not supported at this time.
 
