@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
-import { APIPromise } from '../core';
 import * as Core from '../core';
 import * as BookmarksAPI from './bookmarks';
 
@@ -17,9 +16,12 @@ export class Bookmarks extends APIResource {
   /**
    * Get bookmarks paginated list
    */
-  list(query?: BookmarkListParams, options?: Core.RequestOptions): Core.APIPromise<Bookmarks>
-  list(options?: Core.RequestOptions): Core.APIPromise<Bookmarks>
-  list(query: BookmarkListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<Bookmarks> {
+  list(query?: BookmarkListParams, options?: Core.RequestOptions): Core.APIPromise<Bookmarks>;
+  list(options?: Core.RequestOptions): Core.APIPromise<Bookmarks>;
+  list(
+    query: BookmarkListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Bookmarks> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -30,7 +32,10 @@ export class Bookmarks extends APIResource {
    * Delete a bookmark
    */
   delete(id: number, options?: Core.RequestOptions): Core.APIPromise<void> {
-    return this._client.delete(`/api/headless/v1/bookmarks/${id}`, { ...options, headers: { Accept: '*/*', ...options?.headers } });
+    return this._client.delete(`/api/headless/v1/bookmarks/${id}`, {
+      ...options,
+      headers: { Accept: '*/*', ...options?.headers },
+    });
   }
 }
 

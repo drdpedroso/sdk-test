@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as EventAttendeesAPI from './event-attendees';
 
@@ -17,9 +16,17 @@ export class EventAttendees extends APIResource {
   /**
    * List event attendees
    */
-  list(eventId: number, query?: EventAttendeeListParams, options?: Core.RequestOptions): Core.APIPromise<EventAttendees>
-  list(eventId: number, options?: Core.RequestOptions): Core.APIPromise<EventAttendees>
-  list(eventId: number, query: EventAttendeeListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<EventAttendees> {
+  list(
+    eventId: number,
+    query?: EventAttendeeListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<EventAttendees>;
+  list(eventId: number, options?: Core.RequestOptions): Core.APIPromise<EventAttendees>;
+  list(
+    eventId: number,
+    query: EventAttendeeListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<EventAttendees> {
     if (isRequestOptions(query)) {
       return this.list(eventId, {}, query);
     }

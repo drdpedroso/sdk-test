@@ -1,9 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import HeadlessClientSDK, { toFile } from 'headless-client-sdk';
+import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const client = new HeadlessClientSDK({ baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new HeadlessClientSDK({
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource advancedSearch', () => {
   test('search: only required params', async () => {
@@ -18,6 +20,13 @@ describe('resource advancedSearch', () => {
   });
 
   test('search: required and optional params', async () => {
-    const response = await client.advancedSearch.search({ query: 'query', mention_scope: 'mention_scope', page: 0, per_page: 0, space_id: 0, type: 'general' });
+    const response = await client.advancedSearch.search({
+      query: 'query',
+      mention_scope: 'mention_scope',
+      page: 0,
+      per_page: 0,
+      space_id: 0,
+      type: 'general',
+    });
   });
 });

@@ -2,23 +2,25 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
-import { ChatRoomParticipants } from './chat-room-participants';
-import { UnreadChatRooms } from './unread-chat-rooms';
 import * as ChatRoomsAPI from './chat-rooms';
 import * as ChatRoomParticipantsAPI from './chat-room-participants';
 import * as UnreadChatRoomsAPI from './unread-chat-rooms';
 
 export class ChatRooms extends APIResource {
-  chatRoomParticipants: ChatRoomParticipantsAPI.ChatRoomParticipants = new ChatRoomParticipantsAPI.ChatRoomParticipants(this._client);
+  chatRoomParticipants: ChatRoomParticipantsAPI.ChatRoomParticipants =
+    new ChatRoomParticipantsAPI.ChatRoomParticipants(this._client);
   unreadChatRooms: UnreadChatRoomsAPI.UnreadChatRooms = new UnreadChatRoomsAPI.UnreadChatRooms(this._client);
 
   /**
    * Create a chat room
    */
   create(body: ChatRoomCreateParams, options?: Core.RequestOptions): Core.APIPromise<void> {
-    return this._client.post('/api/headless/v1/messages', { body, ...options, headers: { Accept: '*/*', ...options?.headers } });
+    return this._client.post('/api/headless/v1/messages', {
+      body,
+      ...options,
+      headers: { Accept: '*/*', ...options?.headers },
+    });
   }
 
   /**
@@ -31,9 +33,12 @@ export class ChatRooms extends APIResource {
   /**
    * Get chat rooms
    */
-  list(query?: ChatRoomListParams, options?: Core.RequestOptions): Core.APIPromise<ChatRooms>
-  list(options?: Core.RequestOptions): Core.APIPromise<ChatRooms>
-  list(query: ChatRoomListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<ChatRooms> {
+  list(query?: ChatRoomListParams, options?: Core.RequestOptions): Core.APIPromise<ChatRooms>;
+  list(options?: Core.RequestOptions): Core.APIPromise<ChatRooms>;
+  list(
+    query: ChatRoomListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRooms> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -276,7 +281,7 @@ export interface ChatRooms {
   records?: Array<ChatRoom>;
 }
 
-export type Empty = unknown
+export type Empty = unknown;
 
 export interface ChatRoomCreateParams {
   chat_room: ChatRoomCreateParams.ChatRoom;
