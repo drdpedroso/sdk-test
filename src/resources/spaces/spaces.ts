@@ -1,7 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
+import { APIPromise } from '../../core';
 import * as Core from '../../core';
+import { Posts } from './posts';
+import { Events } from './events/events';
+import { Bookmarks } from './bookmarks';
+import { Home } from './home';
 import * as SpacesAPI from './spaces';
 import * as Shared from '../shared';
 import * as BookmarksAPI from './bookmarks';
@@ -44,7 +50,7 @@ export class Spaces extends APIResource {
   }
 }
 
-export type Spaces = Array<Shared.Space>;
+export type Spaces = Array<Shared.Space>
 
 export namespace Spaces {
   export import Spaces = SpacesAPI.Spaces;

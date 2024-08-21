@@ -2,6 +2,7 @@
 
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
+import { APIPromise } from '../core';
 import * as Core from '../core';
 import * as HomePageAPI from './home-page';
 import * as Shared from './shared';
@@ -10,12 +11,9 @@ export class HomePage extends APIResource {
   /**
    * Get home page posts
    */
-  retrieve(query?: HomePageRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>;
-  retrieve(options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>;
-  retrieve(
-    query: HomePageRetrieveParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.Posts> {
+  retrieve(query?: HomePageRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>
+  retrieve(options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>
+  retrieve(query: HomePageRetrieveParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts> {
     if (isRequestOptions(query)) {
       return this.retrieve({}, query);
     }

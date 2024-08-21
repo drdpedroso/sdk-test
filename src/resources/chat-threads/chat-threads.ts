@@ -2,15 +2,15 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
+import { APIPromise } from '../../core';
 import * as Core from '../../core';
+import { UnreadChatThreads } from './unread-chat-threads';
 import * as ChatThreadsAPI from './chat-threads';
 import * as UnreadChatThreadsAPI from './unread-chat-threads';
 import * as ChatRoomMessagesAPI from '../messages/chat-room-messages';
 
 export class ChatThreads extends APIResource {
-  unreadChatThreads: UnreadChatThreadsAPI.UnreadChatThreads = new UnreadChatThreadsAPI.UnreadChatThreads(
-    this._client,
-  );
+  unreadChatThreads: UnreadChatThreadsAPI.UnreadChatThreads = new UnreadChatThreadsAPI.UnreadChatThreads(this._client);
 
   /**
    * Get chat thread
@@ -22,12 +22,9 @@ export class ChatThreads extends APIResource {
   /**
    * List chat threads
    */
-  list(query?: ChatThreadListParams, options?: Core.RequestOptions): Core.APIPromise<ChatThreads>;
-  list(options?: Core.RequestOptions): Core.APIPromise<ChatThreads>;
-  list(
-    query: ChatThreadListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ChatThreads> {
+  list(query?: ChatThreadListParams, options?: Core.RequestOptions): Core.APIPromise<ChatThreads>
+  list(options?: Core.RequestOptions): Core.APIPromise<ChatThreads>
+  list(query: ChatThreadListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<ChatThreads> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

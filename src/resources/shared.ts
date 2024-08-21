@@ -1,5 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import * as Core from '../core'
+import * as Shared from './shared';
 import * as PostsAPI from './spaces/posts';
 
 export interface Comment {

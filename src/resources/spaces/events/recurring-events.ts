@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
+import { APIPromise } from '../../../core';
 import * as Core from '../../../core';
 import * as RecurringEventsAPI from './recurring-events';
 
@@ -9,41 +10,20 @@ export class RecurringEvents extends APIResource {
   /**
    * List recurring events
    */
-  list(
-    spaceId: number,
-    eventId: number,
-    query?: RecurringEventListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RecurringEvents>;
-  list(spaceId: number, eventId: number, options?: Core.RequestOptions): Core.APIPromise<RecurringEvents>;
-  list(
-    spaceId: number,
-    eventId: number,
-    query: RecurringEventListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RecurringEvents> {
+  list(spaceId: number, eventId: number, query?: RecurringEventListParams, options?: Core.RequestOptions): Core.APIPromise<RecurringEvents>
+  list(spaceId: number, eventId: number, options?: Core.RequestOptions): Core.APIPromise<RecurringEvents>
+  list(spaceId: number, eventId: number, query: RecurringEventListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<RecurringEvents> {
     if (isRequestOptions(query)) {
       return this.list(spaceId, eventId, {}, query);
     }
-    return this._client.get(`/api/headless/v1/spaces/${spaceId}/events/${eventId}/recurring_events`, {
-      query,
-      ...options,
-    });
+    return this._client.get(`/api/headless/v1/spaces/${spaceId}/events/${eventId}/recurring_events`, { query, ...options });
   }
 
   /**
    * Update recurring event RSVP for the provided event ids
    */
-  rsvp(
-    spaceId: number,
-    eventId: number,
-    body: RecurringEventRsvpParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RecurringEventRsvpResponse> {
-    return this._client.put(`/api/headless/v1/spaces/${spaceId}/events/${eventId}/recurring_events/rsvp`, {
-      body,
-      ...options,
-    });
+  rsvp(spaceId: number, eventId: number, body: RecurringEventRsvpParams, options?: Core.RequestOptions): Core.APIPromise<RecurringEventRsvpResponse> {
+    return this._client.put(`/api/headless/v1/spaces/${spaceId}/events/${eventId}/recurring_events/rsvp`, { body, ...options });
   }
 }
 
