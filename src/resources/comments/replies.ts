@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as RepliesAPI from './replies';
 import * as Shared from '../shared';
@@ -11,7 +10,11 @@ export class Replies extends APIResource {
   /**
    * Create a reply for a comment
    */
-  create(commentId: string, body: ReplyCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Comment> {
+  create(
+    commentId: string,
+    body: ReplyCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.Comment> {
     return this._client.post(`/api/headless/v1/comments/${commentId}/replies`, { body, ...options });
   }
 
@@ -25,9 +28,17 @@ export class Replies extends APIResource {
   /**
    * Get list of replies for a comment
    */
-  list(commentId: number, query?: ReplyListParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Comments>
-  list(commentId: number, options?: Core.RequestOptions): Core.APIPromise<Shared.Comments>
-  list(commentId: number, query: ReplyListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<Shared.Comments> {
+  list(
+    commentId: number,
+    query?: ReplyListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.Comments>;
+  list(commentId: number, options?: Core.RequestOptions): Core.APIPromise<Shared.Comments>;
+  list(
+    commentId: number,
+    query: ReplyListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.Comments> {
     if (isRequestOptions(query)) {
       return this.list(commentId, {}, query);
     }

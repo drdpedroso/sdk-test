@@ -1,12 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
-import { Comments } from './comments';
-import { PostFollowers } from './post-followers';
-import { UserLikes } from './user-likes';
 import * as PostsAPI from './posts';
 import * as CommentsAPI from './comments';
 import * as PostFollowersAPI from './post-followers';
@@ -22,15 +17,25 @@ export class Posts extends APIResource {
    */
   create(params: PostCreateParams, options?: Core.RequestOptions): Core.APIPromise<ImagePost> {
     const { path_space_id, body_space_id, ...body } = params;
-    return this._client.post(`/api/headless/v1/spaces/${path_space_id}/images/posts`, { body: { space_id: body_space_id, ...body }, ...options });
+    return this._client.post(`/api/headless/v1/spaces/${path_space_id}/images/posts`, {
+      body: { space_id: body_space_id, ...body },
+      ...options,
+    });
   }
 
   /**
    * Update an image post
    */
-  update(id: number | string, params: PostUpdateParams, options?: Core.RequestOptions): Core.APIPromise<ImagePost> {
+  update(
+    id: number | string,
+    params: PostUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ImagePost> {
     const { path_space_id, body_space_id, ...body } = params;
-    return this._client.put(`/api/headless/v1/spaces/${path_space_id}/images/posts/${id}`, { body: { space_id: body_space_id, ...body }, ...options });
+    return this._client.put(`/api/headless/v1/spaces/${path_space_id}/images/posts/${id}`, {
+      body: { space_id: body_space_id, ...body },
+      ...options,
+    });
   }
 }
 

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as SpacesPostsAPI from './posts';
 import * as Shared from '../shared';
@@ -15,22 +14,37 @@ export class Posts extends APIResource {
    */
   create(params: PostCreateParams, options?: Core.RequestOptions): Core.APIPromise<Post> {
     const { path_space_id, body_space_id, ...body } = params;
-    return this._client.post(`/api/headless/v1/spaces/${path_space_id}/posts`, { body: { space_id: body_space_id, ...body }, ...options });
+    return this._client.post(`/api/headless/v1/spaces/${path_space_id}/posts`, {
+      body: { space_id: body_space_id, ...body },
+      ...options,
+    });
   }
 
   /**
    * Get a post
    */
-  retrieve(spaceId: number | string, id: number | string, options?: Core.RequestOptions): Core.APIPromise<Post> {
+  retrieve(
+    spaceId: number | string,
+    id: number | string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Post> {
     return this._client.get(`/api/headless/v1/spaces/${spaceId}/posts/${id}`, options);
   }
 
   /**
    * Get list of posts in a space
    */
-  list(spaceId: number | string, query?: PostListParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>
-  list(spaceId: number | string, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>
-  list(spaceId: number | string, query: PostListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts> {
+  list(
+    spaceId: number | string,
+    query?: PostListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.Posts>;
+  list(spaceId: number | string, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>;
+  list(
+    spaceId: number | string,
+    query: PostListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.Posts> {
     if (isRequestOptions(query)) {
       return this.list(spaceId, {}, query);
     }
@@ -40,12 +54,16 @@ export class Posts extends APIResource {
   /**
    * Delete a post
    */
-  delete(spaceId: number | string, id: number | string, options?: Core.RequestOptions): Core.APIPromise<PostDeleteResponse> {
+  delete(
+    spaceId: number | string,
+    id: number | string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<PostDeleteResponse> {
     return this._client.delete(`/api/headless/v1/spaces/${spaceId}/posts/${id}`, options);
   }
 }
 
-export type Post = Post.BasicPost | PostsAPI.ImagePost | Post.EventPost
+export type Post = Post.BasicPost | PostsAPI.ImagePost | Post.EventPost;
 
 export namespace Post {
   export interface BasicPost {

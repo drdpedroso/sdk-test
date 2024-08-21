@@ -2,12 +2,7 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
-import { Comments } from './comments';
-import { Posts } from './posts';
-import { Spaces } from './spaces';
-import { PublicProfileResource } from './public-profile';
 import * as CommunityMembersAPI from './community-members';
 import * as CommentsAPI from './comments';
 import * as PostsAPI from './posts';
@@ -18,7 +13,9 @@ export class CommunityMembers extends APIResource {
   comments: CommentsAPI.Comments = new CommentsAPI.Comments(this._client);
   posts: PostsAPI.Posts = new PostsAPI.Posts(this._client);
   spaces: SpacesAPI.Spaces = new SpacesAPI.Spaces(this._client);
-  publicProfile: PublicProfileAPI.PublicProfileResource = new PublicProfileAPI.PublicProfileResource(this._client);
+  publicProfile: PublicProfileAPI.PublicProfileResource = new PublicProfileAPI.PublicProfileResource(
+    this._client,
+  );
 
   /**
    * Get current community member details
@@ -30,9 +27,12 @@ export class CommunityMembers extends APIResource {
   /**
    * Get community members paginated list
    */
-  list(query?: CommunityMemberListParams, options?: Core.RequestOptions): Core.APIPromise<CommunityMembers>
-  list(options?: Core.RequestOptions): Core.APIPromise<CommunityMembers>
-  list(query: CommunityMemberListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<CommunityMembers> {
+  list(query?: CommunityMemberListParams, options?: Core.RequestOptions): Core.APIPromise<CommunityMembers>;
+  list(options?: Core.RequestOptions): Core.APIPromise<CommunityMembers>;
+  list(
+    query: CommunityMemberListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CommunityMembers> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }

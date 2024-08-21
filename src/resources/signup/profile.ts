@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as ProfileAPI from './profile';
 import * as Shared from '../shared';
@@ -11,9 +10,15 @@ export class Profile extends APIResource {
   /**
    * Update and confirm community member profile
    */
-  update(body?: ProfileUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.ProfileUpdateResponse>
-  update(options?: Core.RequestOptions): Core.APIPromise<Shared.ProfileUpdateResponse>
-  update(body: ProfileUpdateParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<Shared.ProfileUpdateResponse> {
+  update(
+    body?: ProfileUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ProfileUpdateResponse>;
+  update(options?: Core.RequestOptions): Core.APIPromise<Shared.ProfileUpdateResponse>;
+  update(
+    body: ProfileUpdateParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ProfileUpdateResponse> {
     if (isRequestOptions(body)) {
       return this.update({}, body);
     }
