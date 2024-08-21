@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as UserLikesAPI from './user-likes';
 import * as Shared from '../shared';
@@ -18,9 +17,17 @@ export class UserLikes extends APIResource {
   /**
    * Get list of users who liked a post
    */
-  list(postId: string, query?: UserLikeListParams, options?: Core.RequestOptions): Core.APIPromise<Shared.UserLikes>
-  list(postId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.UserLikes>
-  list(postId: string, query: UserLikeListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<Shared.UserLikes> {
+  list(
+    postId: string,
+    query?: UserLikeListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.UserLikes>;
+  list(postId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.UserLikes>;
+  list(
+    postId: string,
+    query: UserLikeListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.UserLikes> {
     if (isRequestOptions(query)) {
       return this.list(postId, {}, query);
     }

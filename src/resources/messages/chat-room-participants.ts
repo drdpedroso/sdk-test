@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as ChatRoomParticipantsAPI from './chat-room-participants';
 
@@ -10,13 +9,24 @@ export class ChatRoomParticipants extends APIResource {
   /**
    * Get chat room participants
    */
-  list(chatRoomUuid: string, query?: ChatRoomParticipantListParams, options?: Core.RequestOptions): Core.APIPromise<ChatRoomParticipants>
-  list(chatRoomUuid: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomParticipants>
-  list(chatRoomUuid: string, query: ChatRoomParticipantListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<ChatRoomParticipants> {
+  list(
+    chatRoomUuid: string,
+    query?: ChatRoomParticipantListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomParticipants>;
+  list(chatRoomUuid: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomParticipants>;
+  list(
+    chatRoomUuid: string,
+    query: ChatRoomParticipantListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomParticipants> {
     if (isRequestOptions(query)) {
       return this.list(chatRoomUuid, {}, query);
     }
-    return this._client.get(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_participants`, { query, ...options });
+    return this._client.get(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_participants`, {
+      query,
+      ...options,
+    });
   }
 }
 

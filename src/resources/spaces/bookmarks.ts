@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as BookmarksAPI from './bookmarks';
 
@@ -10,9 +9,17 @@ export class Bookmarks extends APIResource {
   /**
    * Get space bookmarks
    */
-  list(spaceId: number, query?: BookmarkListParams, options?: Core.RequestOptions): Core.APIPromise<SpaceBookmarks>
-  list(spaceId: number, options?: Core.RequestOptions): Core.APIPromise<SpaceBookmarks>
-  list(spaceId: number, query: BookmarkListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<SpaceBookmarks> {
+  list(
+    spaceId: number,
+    query?: BookmarkListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SpaceBookmarks>;
+  list(spaceId: number, options?: Core.RequestOptions): Core.APIPromise<SpaceBookmarks>;
+  list(
+    spaceId: number,
+    query: BookmarkListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SpaceBookmarks> {
     if (isRequestOptions(query)) {
       return this.list(spaceId, {}, query);
     }

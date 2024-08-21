@@ -1,9 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import HeadlessClientSDK, { toFile } from 'headless-client-sdk';
+import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const client = new HeadlessClientSDK({ baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new HeadlessClientSDK({
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource bookmarks', () => {
   test('create: only required params', async () => {
@@ -34,16 +36,19 @@ describe('resource bookmarks', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.bookmarks.list({ path: '/_stainless_unknown_path' }))
-      .rejects
-      .toThrow(HeadlessClientSDK.NotFoundError);
+    await expect(client.bookmarks.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      HeadlessClientSDK.NotFoundError,
+    );
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.bookmarks.list({ bookmark_type: 'post', page: 0, per_page: 0 }, { path: '/_stainless_unknown_path' }))
-      .rejects
-      .toThrow(HeadlessClientSDK.NotFoundError);
+    await expect(
+      client.bookmarks.list(
+        { bookmark_type: 'post', page: 0, per_page: 0 },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('delete', async () => {
@@ -59,8 +64,8 @@ describe('resource bookmarks', () => {
 
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.bookmarks.delete(0, { path: '/_stainless_unknown_path' }))
-      .rejects
-      .toThrow(HeadlessClientSDK.NotFoundError);
+    await expect(client.bookmarks.delete(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      HeadlessClientSDK.NotFoundError,
+    );
   });
 });

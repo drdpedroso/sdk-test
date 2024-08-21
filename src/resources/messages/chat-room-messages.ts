@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as ChatRoomMessagesAPI from './chat-room-messages';
 
@@ -10,51 +9,93 @@ export class ChatRoomMessages extends APIResource {
   /**
    * Create chat room message
    */
-  create(chatRoomUuid: string, body?: ChatRoomMessageCreateParams, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessageCreateResponse>
-  create(chatRoomUuid: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessageCreateResponse>
-  create(chatRoomUuid: string, body: ChatRoomMessageCreateParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessageCreateResponse> {
+  create(
+    chatRoomUuid: string,
+    body?: ChatRoomMessageCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomMessageCreateResponse>;
+  create(chatRoomUuid: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessageCreateResponse>;
+  create(
+    chatRoomUuid: string,
+    body: ChatRoomMessageCreateParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomMessageCreateResponse> {
     if (isRequestOptions(body)) {
       return this.create(chatRoomUuid, {}, body);
     }
-    return this._client.post(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages`, { body, ...options });
+    return this._client.post(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages`, {
+      body,
+      ...options,
+    });
   }
 
   /**
    * Get chat room message
    */
-  retrieve(chatRoomUuid: string, id: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessage> {
+  retrieve(
+    chatRoomUuid: string,
+    id: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomMessage> {
     return this._client.get(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages/${id}`, options);
   }
 
   /**
    * Update chat room message
    */
-  update(chatRoomUuid: string, id: string, body?: ChatRoomMessageUpdateParams, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessage>
-  update(chatRoomUuid: string, id: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessage>
-  update(chatRoomUuid: string, id: string, body: ChatRoomMessageUpdateParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessage> {
+  update(
+    chatRoomUuid: string,
+    id: string,
+    body?: ChatRoomMessageUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomMessage>;
+  update(chatRoomUuid: string, id: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessage>;
+  update(
+    chatRoomUuid: string,
+    id: string,
+    body: ChatRoomMessageUpdateParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomMessage> {
     if (isRequestOptions(body)) {
       return this.update(chatRoomUuid, id, {}, body);
     }
-    return this._client.put(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages/${id}`, { body, ...options });
+    return this._client.put(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages/${id}`, {
+      body,
+      ...options,
+    });
   }
 
   /**
    * Fetch chat room messages
    */
-  list(chatRoomUuid: string, query?: ChatRoomMessageListParams, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessages>
-  list(chatRoomUuid: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessages>
-  list(chatRoomUuid: string, query: ChatRoomMessageListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessages> {
+  list(
+    chatRoomUuid: string,
+    query?: ChatRoomMessageListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomMessages>;
+  list(chatRoomUuid: string, options?: Core.RequestOptions): Core.APIPromise<ChatRoomMessages>;
+  list(
+    chatRoomUuid: string,
+    query: ChatRoomMessageListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatRoomMessages> {
     if (isRequestOptions(query)) {
       return this.list(chatRoomUuid, {}, query);
     }
-    return this._client.get(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages`, { query, ...options });
+    return this._client.get(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages`, {
+      query,
+      ...options,
+    });
   }
 
   /**
    * Delete chat room message
    */
   delete(chatRoomUuid: string, id: string, options?: Core.RequestOptions): Core.APIPromise<void> {
-    return this._client.delete(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages/${id}`, { ...options, headers: { Accept: '*/*', ...options?.headers } });
+    return this._client.delete(`/api/headless/v1/messages/${chatRoomUuid}/chat_room_messages/${id}`, {
+      ...options,
+      headers: { Accept: '*/*', ...options?.headers },
+    });
   }
 }
 

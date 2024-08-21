@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
-import { APIPromise } from '../core';
 import * as Core from '../core';
 import * as NotificationsAPI from './notifications';
 
@@ -10,9 +9,12 @@ export class Notifications extends APIResource {
   /**
    * Get a paginated list of notifications
    */
-  list(query?: NotificationListParams, options?: Core.RequestOptions): Core.APIPromise<Notifications>
-  list(options?: Core.RequestOptions): Core.APIPromise<Notifications>
-  list(query: NotificationListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<Notifications> {
+  list(query?: NotificationListParams, options?: Core.RequestOptions): Core.APIPromise<Notifications>;
+  list(options?: Core.RequestOptions): Core.APIPromise<Notifications>;
+  list(
+    query: NotificationListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Notifications> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -36,13 +38,20 @@ export class Notifications extends APIResource {
   /**
    * Mark all notifications as read
    */
-  markAllAsRead(body?: NotificationMarkAllAsReadParams, options?: Core.RequestOptions): Core.APIPromise<void>
-  markAllAsRead(options?: Core.RequestOptions): Core.APIPromise<void>
-  markAllAsRead(body: NotificationMarkAllAsReadParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<void> {
+  markAllAsRead(body?: NotificationMarkAllAsReadParams, options?: Core.RequestOptions): Core.APIPromise<void>;
+  markAllAsRead(options?: Core.RequestOptions): Core.APIPromise<void>;
+  markAllAsRead(
+    body: NotificationMarkAllAsReadParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<void> {
     if (isRequestOptions(body)) {
       return this.markAllAsRead({}, body);
     }
-    return this._client.post('/api/headless/v1/notifications/mark_all_as_read', { body, ...options, headers: { Accept: '*/*', ...options?.headers } });
+    return this._client.post('/api/headless/v1/notifications/mark_all_as_read', {
+      body,
+      ...options,
+      headers: { Accept: '*/*', ...options?.headers },
+    });
   }
 
   /**

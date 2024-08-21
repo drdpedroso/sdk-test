@@ -20,7 +20,7 @@ or products provided by Headless Client SDK please follow the respective company
 
 ### Headless Client SDK Terms and Policies
 
-Please contact dev-feedback@headless-client-sdk.com. for any questions or concerns regarding security of our services.
+Please contact dev-feedback@headless-client-sdk.com for any questions or concerns regarding security of our services.
 
 ---
 

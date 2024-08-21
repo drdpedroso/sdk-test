@@ -1,8 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as PublicProfileAPI from './public-profile';
 
@@ -11,7 +9,10 @@ export class PublicProfileResource extends APIResource {
    * Get public profile details for a community member ID
    */
   retrieve(communityMemberId: number, options?: Core.RequestOptions): Core.APIPromise<PublicProfile> {
-    return this._client.get(`/api/headless/v1/community_members/${communityMemberId}/public_profile`, options);
+    return this._client.get(
+      `/api/headless/v1/community_members/${communityMemberId}/public_profile`,
+      options,
+    );
   }
 }
 

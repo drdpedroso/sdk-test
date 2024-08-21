@@ -1,13 +1,22 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import HeadlessClientSDK, { toFile } from 'headless-client-sdk';
+import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const client = new HeadlessClientSDK({ baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
+const client = new HeadlessClientSDK({
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource flaggedContents', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.flaggedContents.create({ flagged_content: { flagged_contentable_id: 0, flagged_contentable_type: 'flagged_contentable_type', reported_reason_type: 'reported_reason_type', reported_reason_body: 'harassment' } });
+    const responsePromise = client.flaggedContents.create({
+      flagged_content: {
+        flagged_contentable_id: 0,
+        flagged_contentable_type: 'flagged_contentable_type',
+        reported_reason_body: 'harassment',
+        reported_reason_type: 'reported_reason_type',
+      },
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,6 +27,13 @@ describe('resource flaggedContents', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.flaggedContents.create({ flagged_content: { flagged_contentable_id: 0, flagged_contentable_type: 'flagged_contentable_type', reported_reason_type: 'reported_reason_type', reported_reason_body: 'harassment' } });
+    const response = await client.flaggedContents.create({
+      flagged_content: {
+        flagged_contentable_id: 0,
+        flagged_contentable_type: 'flagged_contentable_type',
+        reported_reason_body: 'harassment',
+        reported_reason_type: 'reported_reason_type',
+      },
+    });
   });
 });
