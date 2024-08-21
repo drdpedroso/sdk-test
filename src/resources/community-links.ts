@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import { APIPromise } from '../core';
 import * as Core from '../core';
 import * as CommunityLinksAPI from './community-links';
 
@@ -13,7 +15,7 @@ export class CommunityLinks extends APIResource {
   }
 }
 
-export type CommunityLinks = Array<CommunityLinks.CommunityLinkItem>;
+export type CommunityLinks = Array<CommunityLinks.CommunityLinkItem>
 
 export namespace CommunityLinks {
   export interface CommunityLinkItem {

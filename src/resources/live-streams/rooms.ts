@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
+import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as RoomsAPI from './rooms';
 
@@ -9,12 +10,9 @@ export class Rooms extends APIResource {
   /**
    * Create a live stream room
    */
-  create(body?: RoomCreateParams, options?: Core.RequestOptions): Core.APIPromise<LiveRoom>;
-  create(options?: Core.RequestOptions): Core.APIPromise<LiveRoom>;
-  create(
-    body: RoomCreateParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<LiveRoom> {
+  create(body?: RoomCreateParams, options?: Core.RequestOptions): Core.APIPromise<LiveRoom>
+  create(options?: Core.RequestOptions): Core.APIPromise<LiveRoom>
+  create(body: RoomCreateParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<LiveRoom> {
     if (isRequestOptions(body)) {
       return this.create({}, body);
     }

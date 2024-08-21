@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
+import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as PostFollowersAPI from './post-followers';
 
@@ -15,11 +17,7 @@ export class PostFollowers extends APIResource {
   /**
    * Unfollow a post with ID
    */
-  delete(
-    postId: number,
-    id: number,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PostFollowerDeleteResponse> {
+  delete(postId: number, id: number, options?: Core.RequestOptions): Core.APIPromise<PostFollowerDeleteResponse> {
     return this._client.delete(`/api/headless/v1/posts/${postId}/post_followers/${id}`, options);
   }
 }

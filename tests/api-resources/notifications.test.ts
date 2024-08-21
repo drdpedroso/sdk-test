@@ -1,11 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import HeadlessClientSDK from 'headless-client-sdk';
+import HeadlessClientSDK, { toFile } from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const client = new HeadlessClientSDK({
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
-});
+const client = new HeadlessClientSDK({ baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010' });
 
 describe('resource notifications', () => {
   test('list', async () => {
@@ -21,19 +19,16 @@ describe('resource notifications', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.notifications.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      HeadlessClientSDK.NotFoundError,
-    );
+    await expect(client.notifications.list({ path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.notifications.list(
-        { page: 0, per_page: 0, sort: 'oldest' },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
+    await expect(client.notifications.list({ page: 0, per_page: 0, sort: 'oldest' }, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('delete', async () => {
@@ -49,9 +44,9 @@ describe('resource notifications', () => {
 
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.notifications.delete(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      HeadlessClientSDK.NotFoundError,
-    );
+    await expect(client.notifications.delete(0, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('archive', async () => {
@@ -67,9 +62,9 @@ describe('resource notifications', () => {
 
   test('archive: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.notifications.archive(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      HeadlessClientSDK.NotFoundError,
-    );
+    await expect(client.notifications.archive(0, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('markAllAsRead', async () => {
@@ -85,19 +80,16 @@ describe('resource notifications', () => {
 
   test('markAllAsRead: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.notifications.markAllAsRead({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      HeadlessClientSDK.NotFoundError,
-    );
+    await expect(client.notifications.markAllAsRead({ path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('markAllAsRead: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.notifications.markAllAsRead(
-        { notification_type: 'notification_type', parent_notifiable: { type: 'type', id: 1 } },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
+    await expect(client.notifications.markAllAsRead({ notification_type: 'notification_type', parent_notifiable: { type: 'type', id: 1 } }, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('markAsRead', async () => {
@@ -113,9 +105,9 @@ describe('resource notifications', () => {
 
   test('markAsRead: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.notifications.markAsRead(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      HeadlessClientSDK.NotFoundError,
-    );
+    await expect(client.notifications.markAsRead(0, { path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('newNotificationsCount', async () => {
@@ -131,9 +123,9 @@ describe('resource notifications', () => {
 
   test('newNotificationsCount: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.notifications.newNotificationsCount({ path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
+    await expect(client.notifications.newNotificationsCount({ path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('resetNewNotificationsCount', async () => {
@@ -149,8 +141,8 @@ describe('resource notifications', () => {
 
   test('resetNewNotificationsCount: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.notifications.resetNewNotificationsCount({ path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
+    await expect(client.notifications.resetNewNotificationsCount({ path: '/_stainless_unknown_path' }))
+      .rejects
+      .toThrow(HeadlessClientSDK.NotFoundError);
   });
 });
