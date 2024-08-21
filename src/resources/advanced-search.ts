@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import { APIPromise } from '../core';
 import * as Core from '../core';
 import * as AdvancedSearchAPI from './advanced-search';
 
@@ -8,10 +10,7 @@ export class AdvancedSearch extends APIResource {
   /**
    * Advanced Search
    */
-  search(
-    query: AdvancedSearchSearchParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<AdvancedSearchResults> {
+  search(query: AdvancedSearchSearchParams, options?: Core.RequestOptions): Core.APIPromise<AdvancedSearchResults> {
     return this._client.get('/api/headless/v1/advanced_search', { query, ...options });
   }
 }
@@ -27,14 +26,7 @@ export interface AdvancedSearchResults {
 
   per_page?: number;
 
-  records?: Array<
-    | AdvancedSearchResults.AdvancedSearchedPost
-    | AdvancedSearchResults.AdvancedSearchedComment
-    | AdvancedSearchResults.AdvancedSearchedLesson
-    | AdvancedSearchResults.AdvancedSearchedSpace
-    | AdvancedSearchResults.AdvancedSearchedCommunityMember
-    | AdvancedSearchResults.AdvancedSearchedGroupMention
-  >;
+  records?: Array<AdvancedSearchResults.AdvancedSearchedPost | AdvancedSearchResults.AdvancedSearchedComment | AdvancedSearchResults.AdvancedSearchedLesson | AdvancedSearchResults.AdvancedSearchedSpace | AdvancedSearchResults.AdvancedSearchedCommunityMember | AdvancedSearchResults.AdvancedSearchedGroupMention>;
 }
 
 export namespace AdvancedSearchResults {
@@ -262,16 +254,7 @@ export interface AdvancedSearchSearchParams {
   /**
    * Search type
    */
-  type?:
-    | 'general'
-    | 'members'
-    | 'posts'
-    | 'comments'
-    | 'spaces'
-    | 'lessons'
-    | 'events'
-    | 'entity_list'
-    | 'mentions';
+  type?: 'general' | 'members' | 'posts' | 'comments' | 'spaces' | 'lessons' | 'events' | 'entity_list' | 'mentions';
 }
 
 export namespace AdvancedSearch {

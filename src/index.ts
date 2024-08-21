@@ -2,7 +2,8 @@
 
 import * as Errors from './error';
 import * as Uploads from './uploads';
-import { type Agent } from './_shims/index';
+import { isRequestOptions } from './core';
+import { type Agent, type RequestInit } from './_shims/index';
 import * as qs from 'qs';
 import * as Core from './core';
 import * as API from './resources/index';
@@ -66,7 +67,7 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Headless Client SDK API.
+ * API Client for interfacing with the Headless Client SDK API. 
  */
 export class HeadlessClientSDK extends Core.APIClient {
   private _options: ClientOptions;
@@ -82,7 +83,11 @@ export class HeadlessClientSDK extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('HEADLESS_CLIENT_SDK_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({
+    baseURL = Core.readEnv('HEADLESS_CLIENT_SDK_BASE_URL'),
+    ...opts
+  }: ClientOptions = {}) {
+
     const options: ClientOptions = {
       ...opts,
       baseURL: baseURL || `https://{defaultHost}`,
@@ -97,6 +102,7 @@ export class HeadlessClientSDK extends Core.APIClient {
     });
 
     this._options = options;
+
   }
 
   advancedSearch: API.AdvancedSearch = new API.AdvancedSearch(this);
@@ -126,7 +132,7 @@ export class HeadlessClientSDK extends Core.APIClient {
   spaceNotificationDetails: API.SpaceNotificationDetails = new API.SpaceNotificationDetails(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
-    return this._options.defaultQuery;
+    return this._options.defaultQuery
   }
 
   protected override defaultHeaders(opts: Core.FinalRequestOptions): Core.Headers {
@@ -137,7 +143,7 @@ export class HeadlessClientSDK extends Core.APIClient {
   }
 
   protected override stringifyQuery(query: Record<string, unknown>): string {
-    return qs.stringify(query, { arrayFormat: 'comma' });
+    return qs.stringify(query, { arrayFormat: 'comma' })
   }
 
   static HeadlessClientSDK = this;
@@ -160,21 +166,7 @@ export class HeadlessClientSDK extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
-  HeadlessClientSDKError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} = Errors;
+export const { HeadlessClientSDKError, APIError, APIConnectionError, APIConnectionTimeoutError, APIUserAbortError, NotFoundError, ConflictError, RateLimitError, BadRequestError, AuthenticationError, InternalServerError, PermissionDeniedError, UnprocessableEntityError } = Errors
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;

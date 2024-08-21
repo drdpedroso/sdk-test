@@ -2,6 +2,7 @@
 
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
+import { APIPromise } from '../core';
 import * as Core from '../core';
 import * as SpaceNotificationDetailsAPI from './space-notification-details';
 
@@ -9,15 +10,9 @@ export class SpaceNotificationDetails extends APIResource {
   /**
    * Get space notification details
    */
-  list(
-    query?: SpaceNotificationDetailListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpaceNotificationDetails>;
-  list(options?: Core.RequestOptions): Core.APIPromise<SpaceNotificationDetails>;
-  list(
-    query: SpaceNotificationDetailListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpaceNotificationDetails> {
+  list(query?: SpaceNotificationDetailListParams, options?: Core.RequestOptions): Core.APIPromise<SpaceNotificationDetails>
+  list(options?: Core.RequestOptions): Core.APIPromise<SpaceNotificationDetails>
+  list(query: SpaceNotificationDetailListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<SpaceNotificationDetails> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
@@ -25,7 +20,7 @@ export class SpaceNotificationDetails extends APIResource {
   }
 }
 
-export type SpaceNotificationDetails = Array<SpaceNotificationDetails.SpaceNotificationDetailItem>;
+export type SpaceNotificationDetails = Array<SpaceNotificationDetails.SpaceNotificationDetailItem>
 
 export namespace SpaceNotificationDetails {
   export interface SpaceNotificationDetailItem {

@@ -1,7 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
+import { APIPromise } from '../../core';
 import * as Core from '../../core';
+import { SpaceMembers } from './space-members';
+import { Spaces } from './spaces';
 import * as NotificationPreferencesAPI from './notification-preferences';
 import * as SpaceMembersAPI from './space-members';
 import * as SpacesAPI from './spaces';
@@ -13,26 +17,16 @@ export class NotificationPreferences extends APIResource {
   /**
    * Get notification preferences for a medium
    */
-  retrieve(
-    medium: 'in_app' | 'push',
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<MediumNotificationPreferences> {
+  retrieve(medium: 'in_app' | 'push', options?: Core.RequestOptions): Core.APIPromise<MediumNotificationPreferences> {
     return this._client.get(`/api/headless/v1/notification_preferences/${medium}`, options);
   }
 
   /**
    * Update notification preferences for a medium
    */
-  update(
-    medium: 'in_app' | 'push',
-    params: NotificationPreferenceUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<MediumNotificationPreferencesUpdate> {
+  update(medium: 'in_app' | 'push', params: NotificationPreferenceUpdateParams, options?: Core.RequestOptions): Core.APIPromise<MediumNotificationPreferencesUpdate> {
     const { enabled, type } = params;
-    return this._client.put(`/api/headless/v1/notification_preferences/${medium}`, {
-      query: { enabled, type },
-      ...options,
-    });
+    return this._client.put(`/api/headless/v1/notification_preferences/${medium}`, { query: { enabled, type }, ...options });
   }
 }
 
@@ -73,14 +67,7 @@ export interface MediumNotificationPreferencesUpdate {
 export interface NotificationPreferenceUpdateParams {
   enabled: boolean;
 
-  type:
-    | 'post_comment'
-    | 'comment_reply'
-    | 'mention'
-    | 'direct_messages'
-    | 'post_like'
-    | 'comment_like'
-    | 'new_course_content';
+  type: 'post_comment' | 'comment_reply' | 'mention' | 'direct_messages' | 'post_like' | 'comment_like' | 'new_course_content';
 }
 
 export namespace NotificationPreferences {

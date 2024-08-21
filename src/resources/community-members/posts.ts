@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
+import { APIPromise } from '../../core';
 import * as Core from '../../core';
 import * as PostsAPI from './posts';
 import * as Shared from '../shared';
@@ -10,24 +11,13 @@ export class Posts extends APIResource {
   /**
    * Get paginated list of posts for a community member ID
    */
-  list(
-    communityMemberId: number,
-    query?: PostListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.Posts>;
-  list(communityMemberId: number, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>;
-  list(
-    communityMemberId: number,
-    query: PostListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.Posts> {
+  list(communityMemberId: number, query?: PostListParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>
+  list(communityMemberId: number, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts>
+  list(communityMemberId: number, query: PostListParams | Core.RequestOptions = {}, options?: Core.RequestOptions): Core.APIPromise<Shared.Posts> {
     if (isRequestOptions(query)) {
       return this.list(communityMemberId, {}, query);
     }
-    return this._client.get(`/api/headless/v1/community_members/${communityMemberId}/posts`, {
-      query,
-      ...options,
-    });
+    return this._client.get(`/api/headless/v1/community_members/${communityMemberId}/posts`, { query, ...options });
   }
 }
 
