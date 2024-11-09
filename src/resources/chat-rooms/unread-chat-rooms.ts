@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as UnreadChatRoomsAPI from './unread-chat-rooms';
 
 export class UnreadChatRooms extends APIResource {
   /**
@@ -17,6 +16,6 @@ export interface UnreadChatRooms {
   chat_rooms?: Array<string>;
 }
 
-export namespace UnreadChatRooms {
-  export import UnreadChatRooms = UnreadChatRoomsAPI.UnreadChatRooms;
+export declare namespace UnreadChatRooms {
+  export { type UnreadChatRooms as UnreadChatRooms };
 }

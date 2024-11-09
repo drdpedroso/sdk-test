@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as CookiesAPI from './cookies';
 
 export class Cookies extends APIResource {
   /**
@@ -28,7 +27,6 @@ export interface CookiesGenerated {
   message?: string;
 }
 
-export namespace Cookies {
-  export import CookiesDestroyed = CookiesAPI.CookiesDestroyed;
-  export import CookiesGenerated = CookiesAPI.CookiesGenerated;
+export declare namespace Cookies {
+  export { type CookiesDestroyed as CookiesDestroyed, type CookiesGenerated as CookiesGenerated };
 }

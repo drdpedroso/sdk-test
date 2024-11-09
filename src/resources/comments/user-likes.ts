@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as UserLikesAPI from './user-likes';
 import * as Shared from '../shared';
 
 export class UserLikes extends APIResource {
@@ -66,8 +65,10 @@ export interface UserLikeListParams {
   per_page?: number;
 }
 
-export namespace UserLikes {
-  export import UserLikeCreateResponse = UserLikesAPI.UserLikeCreateResponse;
-  export import UserLikeDeleteResponse = UserLikesAPI.UserLikeDeleteResponse;
-  export import UserLikeListParams = UserLikesAPI.UserLikeListParams;
+export declare namespace UserLikes {
+  export {
+    type UserLikeCreateResponse as UserLikeCreateResponse,
+    type UserLikeDeleteResponse as UserLikeDeleteResponse,
+    type UserLikeListParams as UserLikeListParams,
+  };
 }

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SpacesAPI from './spaces';
 
 export class Spaces extends APIResource {
   /**
@@ -38,8 +37,10 @@ export interface SpaceUpdateParams {
   choice: 'all' | 'never' | 'mention';
 }
 
-export namespace Spaces {
-  export import MediumSpaceNotificationPreferencesUpdate = SpacesAPI.MediumSpaceNotificationPreferencesUpdate;
-  export import MediumSpaceNotificationPreferencesUpdateAll = SpacesAPI.MediumSpaceNotificationPreferencesUpdateAll;
-  export import SpaceUpdateParams = SpacesAPI.SpaceUpdateParams;
+export declare namespace Spaces {
+  export {
+    type MediumSpaceNotificationPreferencesUpdate as MediumSpaceNotificationPreferencesUpdate,
+    type MediumSpaceNotificationPreferencesUpdateAll as MediumSpaceNotificationPreferencesUpdateAll,
+    type SpaceUpdateParams as SpaceUpdateParams,
+  };
 }

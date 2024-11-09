@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as FlaggedContentsAPI from './flagged-contents';
 
 export class FlaggedContents extends APIResource {
   /**
@@ -36,7 +35,9 @@ export namespace FlaggedContentCreateParams {
   }
 }
 
-export namespace FlaggedContents {
-  export import FlaggedContentCreateResponse = FlaggedContentsAPI.FlaggedContentCreateResponse;
-  export import FlaggedContentCreateParams = FlaggedContentsAPI.FlaggedContentCreateParams;
+export declare namespace FlaggedContents {
+  export {
+    type FlaggedContentCreateResponse as FlaggedContentCreateResponse,
+    type FlaggedContentCreateParams as FlaggedContentCreateParams,
+  };
 }

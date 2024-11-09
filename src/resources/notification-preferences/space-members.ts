@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SpaceMembersAPI from './space-members';
 
 export class SpaceMembers extends APIResource {
   /**
@@ -19,6 +18,6 @@ export interface SpaceMemberNotificationPreferences {
   push?: string;
 }
 
-export namespace SpaceMembers {
-  export import SpaceMemberNotificationPreferences = SpaceMembersAPI.SpaceMemberNotificationPreferences;
+export declare namespace SpaceMembers {
+  export { type SpaceMemberNotificationPreferences as SpaceMemberNotificationPreferences };
 }

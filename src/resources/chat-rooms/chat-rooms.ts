@@ -3,9 +3,10 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ChatRoomsAPI from './chat-rooms';
 import * as ChatRoomParticipantsAPI from './chat-room-participants';
+import { ChatRoomParticipantUpdateParams, ChatRoomParticipants } from './chat-room-participants';
 import * as UnreadChatRoomsAPI from './unread-chat-rooms';
+import { UnreadChatRooms } from './unread-chat-rooms';
 
 export class ChatRooms extends APIResource {
   chatRoomParticipants: ChatRoomParticipantsAPI.ChatRoomParticipants =
@@ -311,13 +312,21 @@ export interface ChatRoomListParams {
   per_page?: number;
 }
 
-export namespace ChatRooms {
-  export import ChatRoom = ChatRoomsAPI.ChatRoom;
-  export import ChatRooms = ChatRoomsAPI.ChatRooms;
-  export import Empty = ChatRoomsAPI.Empty;
-  export import ChatRoomCreateParams = ChatRoomsAPI.ChatRoomCreateParams;
-  export import ChatRoomListParams = ChatRoomsAPI.ChatRoomListParams;
-  export import ChatRoomParticipants = ChatRoomParticipantsAPI.ChatRoomParticipants;
-  export import ChatRoomParticipantUpdateParams = ChatRoomParticipantsAPI.ChatRoomParticipantUpdateParams;
-  export import UnreadChatRooms = UnreadChatRoomsAPI.UnreadChatRooms;
+ChatRooms.ChatRoomParticipants = ChatRoomParticipants;
+
+export declare namespace ChatRooms {
+  export {
+    type ChatRoom as ChatRoom,
+    type ChatRooms as ChatRooms,
+    type Empty as Empty,
+    type ChatRoomCreateParams as ChatRoomCreateParams,
+    type ChatRoomListParams as ChatRoomListParams,
+  };
+
+  export {
+    ChatRoomParticipants as ChatRoomParticipants,
+    type ChatRoomParticipantUpdateParams as ChatRoomParticipantUpdateParams,
+  };
+
+  export { type UnreadChatRooms as UnreadChatRooms };
 }

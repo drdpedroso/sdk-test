@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as PublicProfileAPI from './public-profile';
 
 export class PublicProfileResource extends APIResource {
   /**
@@ -94,6 +93,6 @@ export namespace PublicProfile {
   }
 }
 
-export namespace PublicProfileResource {
-  export import PublicProfile = PublicProfileAPI.PublicProfile;
+export declare namespace PublicProfileResource {
+  export { type PublicProfile as PublicProfile };
 }

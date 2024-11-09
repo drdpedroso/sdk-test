@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as NotificationsAPI from './notifications';
 
 export class Notifications extends APIResource {
   /**
@@ -174,11 +173,13 @@ export namespace NotificationMarkAllAsReadParams {
   }
 }
 
-export namespace Notifications {
-  export import NewNotificationsCount = NotificationsAPI.NewNotificationsCount;
-  export import Notification = NotificationsAPI.Notification;
-  export import Notifications = NotificationsAPI.Notifications;
-  export import ResetNewNotificationsCount = NotificationsAPI.ResetNewNotificationsCount;
-  export import NotificationListParams = NotificationsAPI.NotificationListParams;
-  export import NotificationMarkAllAsReadParams = NotificationsAPI.NotificationMarkAllAsReadParams;
+export declare namespace Notifications {
+  export {
+    type NewNotificationsCount as NewNotificationsCount,
+    type Notification as Notification,
+    type Notifications as Notifications,
+    type ResetNewNotificationsCount as ResetNewNotificationsCount,
+    type NotificationListParams as NotificationListParams,
+    type NotificationMarkAllAsReadParams as NotificationMarkAllAsReadParams,
+  };
 }

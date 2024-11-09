@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as BookmarksAPI from './bookmarks';
 
 export class Bookmarks extends APIResource {
   /**
@@ -83,7 +82,6 @@ export interface BookmarkListParams {
   per_page?: number;
 }
 
-export namespace Bookmarks {
-  export import SpaceBookmarks = BookmarksAPI.SpaceBookmarks;
-  export import BookmarkListParams = BookmarksAPI.BookmarkListParams;
+export declare namespace Bookmarks {
+  export { type SpaceBookmarks as SpaceBookmarks, type BookmarkListParams as BookmarkListParams };
 }
