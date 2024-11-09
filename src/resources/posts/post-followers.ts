@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as PostFollowersAPI from './post-followers';
 
 export class PostFollowers extends APIResource {
   /**
@@ -36,7 +35,9 @@ export interface PostFollowerDeleteResponse {
   success?: boolean;
 }
 
-export namespace PostFollowers {
-  export import PostFollowerCreateResponse = PostFollowersAPI.PostFollowerCreateResponse;
-  export import PostFollowerDeleteResponse = PostFollowersAPI.PostFollowerDeleteResponse;
+export declare namespace PostFollowers {
+  export {
+    type PostFollowerCreateResponse as PostFollowerCreateResponse,
+    type PostFollowerDeleteResponse as PostFollowerDeleteResponse,
+  };
 }

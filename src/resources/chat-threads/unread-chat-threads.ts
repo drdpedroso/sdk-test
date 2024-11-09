@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as UnreadChatThreadsAPI from './unread-chat-threads';
 
 export class UnreadChatThreads extends APIResource {
   /**
@@ -17,6 +16,6 @@ export interface UnreadChatThreadListResponse {
   chat_thread_ids?: Array<number>;
 }
 
-export namespace UnreadChatThreads {
-  export import UnreadChatThreadListResponse = UnreadChatThreadsAPI.UnreadChatThreadListResponse;
+export declare namespace UnreadChatThreads {
+  export { type UnreadChatThreadListResponse as UnreadChatThreadListResponse };
 }

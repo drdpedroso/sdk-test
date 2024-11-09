@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as ReactionsAPI from './reactions';
 
 export class Reactions extends APIResource {
   /**
@@ -39,7 +38,9 @@ export interface ReactionCreateParams {
   emoji: string;
 }
 
-export namespace Reactions {
-  export import CreateReactionResponse = ReactionsAPI.CreateReactionResponse;
-  export import ReactionCreateParams = ReactionsAPI.ReactionCreateParams;
+export declare namespace Reactions {
+  export {
+    type CreateReactionResponse as CreateReactionResponse,
+    type ReactionCreateParams as ReactionCreateParams,
+  };
 }

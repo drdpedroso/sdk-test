@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as SearchAPI from './search';
 
 export class Search extends APIResource {
   /**
@@ -271,7 +270,6 @@ export interface SearchListParams {
   per_page?: number;
 }
 
-export namespace Search {
-  export import SearchResults = SearchAPI.SearchResults;
-  export import SearchListParams = SearchAPI.SearchListParams;
+export declare namespace Search {
+  export { type SearchResults as SearchResults, type SearchListParams as SearchListParams };
 }

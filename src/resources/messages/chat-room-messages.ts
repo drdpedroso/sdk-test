@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ChatRoomMessagesAPI from './chat-room-messages';
 
 export class ChatRoomMessages extends APIResource {
   /**
@@ -291,11 +290,13 @@ export interface ChatRoomMessageListParams {
   per_page?: number;
 }
 
-export namespace ChatRoomMessages {
-  export import ChatRoomMessage = ChatRoomMessagesAPI.ChatRoomMessage;
-  export import ChatRoomMessages = ChatRoomMessagesAPI.ChatRoomMessages;
-  export import ChatRoomMessageCreateResponse = ChatRoomMessagesAPI.ChatRoomMessageCreateResponse;
-  export import ChatRoomMessageCreateParams = ChatRoomMessagesAPI.ChatRoomMessageCreateParams;
-  export import ChatRoomMessageUpdateParams = ChatRoomMessagesAPI.ChatRoomMessageUpdateParams;
-  export import ChatRoomMessageListParams = ChatRoomMessagesAPI.ChatRoomMessageListParams;
+export declare namespace ChatRoomMessages {
+  export {
+    type ChatRoomMessage as ChatRoomMessage,
+    type ChatRoomMessages as ChatRoomMessages,
+    type ChatRoomMessageCreateResponse as ChatRoomMessageCreateResponse,
+    type ChatRoomMessageCreateParams as ChatRoomMessageCreateParams,
+    type ChatRoomMessageUpdateParams as ChatRoomMessageUpdateParams,
+    type ChatRoomMessageListParams as ChatRoomMessageListParams,
+  };
 }

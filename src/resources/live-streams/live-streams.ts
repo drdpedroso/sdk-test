@@ -2,13 +2,14 @@
 
 import { APIResource } from '../../resource';
 import * as RoomsAPI from './rooms';
+import { LiveRoom, RoomCreateParams, Rooms } from './rooms';
 
 export class LiveStreams extends APIResource {
   rooms: RoomsAPI.Rooms = new RoomsAPI.Rooms(this._client);
 }
 
-export namespace LiveStreams {
-  export import Rooms = RoomsAPI.Rooms;
-  export import LiveRoom = RoomsAPI.LiveRoom;
-  export import RoomCreateParams = RoomsAPI.RoomCreateParams;
+LiveStreams.Rooms = Rooms;
+
+export declare namespace LiveStreams {
+  export { Rooms as Rooms, type LiveRoom as LiveRoom, type RoomCreateParams as RoomCreateParams };
 }

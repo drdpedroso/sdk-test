@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as SpacesPostsAPI from './posts';
 import * as Shared from '../shared';
 import * as EventAttendeesAPI from '../events/event-attendees';
 import * as PostsAPI from '../posts/posts';
@@ -790,9 +789,11 @@ export interface PostListParams {
   per_page?: number;
 }
 
-export namespace Posts {
-  export import Post = SpacesPostsAPI.Post;
-  export import PostDeleteResponse = SpacesPostsAPI.PostDeleteResponse;
-  export import PostCreateParams = SpacesPostsAPI.PostCreateParams;
-  export import PostListParams = SpacesPostsAPI.PostListParams;
+export declare namespace Posts {
+  export {
+    type Post as Post,
+    type PostDeleteResponse as PostDeleteResponse,
+    type PostCreateParams as PostCreateParams,
+    type PostListParams as PostListParams,
+  };
 }

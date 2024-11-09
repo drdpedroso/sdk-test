@@ -3,11 +3,14 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as CommunityMembersAPI from './community-members';
 import * as CommentsAPI from './comments';
+import { CommentListParams, Comments } from './comments';
 import * as PostsAPI from './posts';
+import { PostListParams, Posts } from './posts';
 import * as PublicProfileAPI from './public-profile';
+import { PublicProfile, PublicProfileResource } from './public-profile';
 import * as SpacesAPI from './spaces';
+import { PaginatedSpaces, SpaceListParams, Spaces } from './spaces';
 
 export class CommunityMembers extends APIResource {
   comments: CommentsAPI.Comments = new CommentsAPI.Comments(this._client);
@@ -429,18 +432,28 @@ export interface CommunityMemberListParams {
   space_id?: number;
 }
 
-export namespace CommunityMembers {
-  export import CommunityMembers = CommunityMembersAPI.CommunityMembers;
-  export import CurrentCommunityMember = CommunityMembersAPI.CurrentCommunityMember;
-  export import MemberDeactivated = CommunityMembersAPI.MemberDeactivated;
-  export import CommunityMemberListParams = CommunityMembersAPI.CommunityMemberListParams;
-  export import Comments = CommentsAPI.Comments;
-  export import CommentListParams = CommentsAPI.CommentListParams;
-  export import Posts = PostsAPI.Posts;
-  export import PostListParams = PostsAPI.PostListParams;
-  export import Spaces = SpacesAPI.Spaces;
-  export import PaginatedSpaces = SpacesAPI.PaginatedSpaces;
-  export import SpaceListParams = SpacesAPI.SpaceListParams;
-  export import PublicProfileResource = PublicProfileAPI.PublicProfileResource;
-  export import PublicProfile = PublicProfileAPI.PublicProfile;
+CommunityMembers.Comments = Comments;
+CommunityMembers.Posts = Posts;
+CommunityMembers.Spaces = Spaces;
+CommunityMembers.PublicProfileResource = PublicProfileResource;
+
+export declare namespace CommunityMembers {
+  export {
+    type CommunityMembers as CommunityMembers,
+    type CurrentCommunityMember as CurrentCommunityMember,
+    type MemberDeactivated as MemberDeactivated,
+    type CommunityMemberListParams as CommunityMemberListParams,
+  };
+
+  export { Comments as Comments, type CommentListParams as CommentListParams };
+
+  export { Posts as Posts, type PostListParams as PostListParams };
+
+  export {
+    Spaces as Spaces,
+    type PaginatedSpaces as PaginatedSpaces,
+    type SpaceListParams as SpaceListParams,
+  };
+
+  export { PublicProfileResource as PublicProfileResource, type PublicProfile as PublicProfile };
 }

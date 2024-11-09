@@ -1,5 +1,5 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export { Courses } from './courses';
-export { Lesson, LessonFiles, Lessons } from './lessons/index';
-export { Sections } from './sections';
+export { Lessons, type Lesson, type LessonFiles } from './lessons/index';
+export { type Sections } from './sections';
