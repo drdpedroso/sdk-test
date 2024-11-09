@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as CommunityLinksAPI from './community-links';
 
 export class CommunityLinks extends APIResource {
   /**
@@ -31,6 +30,6 @@ export namespace CommunityLinks {
   }
 }
 
-export namespace CommunityLinks {
-  export import CommunityLinks = CommunityLinksAPI.CommunityLinks;
+export declare namespace CommunityLinks {
+  export { type CommunityLinks as CommunityLinks };
 }

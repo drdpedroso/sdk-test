@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as InvitationLinksAPI from './invitation-links';
 
 export class InvitationLinks extends APIResource {
   /**
@@ -17,6 +16,6 @@ export interface InvitationLinkJoinResponse {
   redirect_to_space_id?: number | null;
 }
 
-export namespace InvitationLinks {
-  export import InvitationLinkJoinResponse = InvitationLinksAPI.InvitationLinkJoinResponse;
+export declare namespace InvitationLinks {
+  export { type InvitationLinkJoinResponse as InvitationLinkJoinResponse };
 }

@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as SpaceNotificationDetailsAPI from './space-notification-details';
 
 export class SpaceNotificationDetails extends APIResource {
   /**
@@ -44,7 +43,9 @@ export interface SpaceNotificationDetailListParams {
   space_ids?: string;
 }
 
-export namespace SpaceNotificationDetails {
-  export import SpaceNotificationDetails = SpaceNotificationDetailsAPI.SpaceNotificationDetails;
-  export import SpaceNotificationDetailListParams = SpaceNotificationDetailsAPI.SpaceNotificationDetailListParams;
+export declare namespace SpaceNotificationDetails {
+  export {
+    type SpaceNotificationDetails as SpaceNotificationDetails,
+    type SpaceNotificationDetailListParams as SpaceNotificationDetailListParams,
+  };
 }

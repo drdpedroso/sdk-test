@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as EventAttendeesAPI from './event-attendees';
 
 export class EventAttendees extends APIResource {
   /**
@@ -81,8 +80,10 @@ export interface EventAttendeeListParams {
   per_page?: number;
 }
 
-export namespace EventAttendees {
-  export import EventAttendee = EventAttendeesAPI.EventAttendee;
-  export import EventAttendees = EventAttendeesAPI.EventAttendees;
-  export import EventAttendeeListParams = EventAttendeesAPI.EventAttendeeListParams;
+export declare namespace EventAttendees {
+  export {
+    type EventAttendee as EventAttendee,
+    type EventAttendees as EventAttendees,
+    type EventAttendeeListParams as EventAttendeeListParams,
+  };
 }

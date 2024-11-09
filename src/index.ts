@@ -1,11 +1,70 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { type Agent } from './_shims/index';
+import * as qs from './internal/qs';
+import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
-import { type Agent } from './_shims/index';
-import * as qs from 'qs';
-import * as Core from './core';
 import * as API from './resources/index';
+import {
+  AdvancedSearch,
+  AdvancedSearchResults,
+  AdvancedSearchSearchParams,
+} from './resources/advanced-search';
+import { Bookmark, BookmarkCreateParams, BookmarkListParams, Bookmarks } from './resources/bookmarks';
+import { CommunityLinks } from './resources/community-links';
+import { Cookies, CookiesDestroyed, CookiesGenerated } from './resources/cookies';
+import {
+  FlaggedContentCreateParams,
+  FlaggedContentCreateResponse,
+  FlaggedContents,
+} from './resources/flagged-contents';
+import { HomePage, HomePageRetrieveParams } from './resources/home-page';
+import { InvitationLinkJoinResponse, InvitationLinks } from './resources/invitation-links';
+import {
+  NewNotificationsCount,
+  Notification,
+  NotificationListParams,
+  NotificationMarkAllAsReadParams,
+  Notifications,
+  ResetNewNotificationsCount,
+} from './resources/notifications';
+import { Profile, ProfileUpdateParams } from './resources/profile';
+import { CreateReactionResponse, ReactionCreateParams, Reactions } from './resources/reactions';
+import { Search, SearchListParams, SearchResults } from './resources/search';
+import { SpaceMemberMarkAsReadResponse, SpaceMembers } from './resources/space-members';
+import {
+  SpaceNotificationDetailListParams,
+  SpaceNotificationDetails,
+} from './resources/space-notification-details';
+import {
+  ChatRoom,
+  ChatRoomCreateParams,
+  ChatRoomListParams,
+  ChatRooms,
+  Empty,
+} from './resources/chat-rooms/chat-rooms';
+import { ChatThread, ChatThreadListParams, ChatThreads } from './resources/chat-threads/chat-threads';
+import { Comments } from './resources/comments/comments';
+import {
+  CommunityMemberListParams,
+  CommunityMembers,
+  CurrentCommunityMember,
+  MemberDeactivated,
+} from './resources/community-members/community-members';
+import { Courses } from './resources/courses/courses';
+import { Events } from './resources/events/events';
+import { LiveStreams } from './resources/live-streams/live-streams';
+import { Messages } from './resources/messages/messages';
+import {
+  MediumNotificationPreferences,
+  MediumNotificationPreferencesUpdate,
+  NotificationPreferenceUpdateParams,
+  NotificationPreferences,
+} from './resources/notification-preferences/notification-preferences';
+import { ImagePost, PostCreateParams, PostUpdateParams, Posts } from './resources/posts/posts';
+import { Signup } from './resources/signup/signup';
+import { Spaces } from './resources/spaces/spaces';
 
 export interface ClientOptions {
   /**
@@ -161,7 +220,7 @@ export class HeadlessClientSDK extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
+export {
   HeadlessClientSDKError,
   APIError,
   APIConnectionError,
@@ -175,108 +234,150 @@ export const {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} = Errors;
+} from './error';
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace HeadlessClientSDK {
-  export import RequestOptions = Core.RequestOptions;
+HeadlessClientSDK.AdvancedSearch = AdvancedSearch;
+HeadlessClientSDK.Messages = Messages;
+HeadlessClientSDK.Posts = Posts;
+HeadlessClientSDK.Cookies = Cookies;
+HeadlessClientSDK.Courses = Courses;
+HeadlessClientSDK.Events = Events;
+HeadlessClientSDK.FlaggedContents = FlaggedContents;
+HeadlessClientSDK.HomePage = HomePage;
+HeadlessClientSDK.InvitationLinks = InvitationLinks;
+HeadlessClientSDK.LiveStreams = LiveStreams;
+HeadlessClientSDK.NotificationPreferences = NotificationPreferences;
+HeadlessClientSDK.Profile = Profile;
+HeadlessClientSDK.Reactions = Reactions;
+HeadlessClientSDK.Comments = Comments;
+HeadlessClientSDK.Search = Search;
+HeadlessClientSDK.Signup = Signup;
+HeadlessClientSDK.SpaceMembers = SpaceMembers;
 
-  export import AdvancedSearch = API.AdvancedSearch;
-  export import AdvancedSearchResults = API.AdvancedSearchResults;
-  export import AdvancedSearchSearchParams = API.AdvancedSearchSearchParams;
+export declare namespace HeadlessClientSDK {
+  export type RequestOptions = Core.RequestOptions;
 
-  export import Bookmarks = API.Bookmarks;
-  export import Bookmark = API.Bookmark;
-  export import BookmarkCreateParams = API.BookmarkCreateParams;
-  export import BookmarkListParams = API.BookmarkListParams;
+  export {
+    AdvancedSearch as AdvancedSearch,
+    type AdvancedSearchResults as AdvancedSearchResults,
+    type AdvancedSearchSearchParams as AdvancedSearchSearchParams,
+  };
 
-  export import Messages = API.Messages;
+  export {
+    type Bookmarks as Bookmarks,
+    type Bookmark as Bookmark,
+    type BookmarkCreateParams as BookmarkCreateParams,
+    type BookmarkListParams as BookmarkListParams,
+  };
 
-  export import ChatRooms = API.ChatRooms;
-  export import ChatRoom = API.ChatRoom;
-  export import Empty = API.Empty;
-  export import ChatRoomCreateParams = API.ChatRoomCreateParams;
-  export import ChatRoomListParams = API.ChatRoomListParams;
+  export { Messages as Messages };
 
-  export import ChatThreads = API.ChatThreads;
-  export import ChatThread = API.ChatThread;
-  export import ChatThreadListParams = API.ChatThreadListParams;
+  export {
+    type ChatRooms as ChatRooms,
+    type ChatRoom as ChatRoom,
+    type Empty as Empty,
+    type ChatRoomCreateParams as ChatRoomCreateParams,
+    type ChatRoomListParams as ChatRoomListParams,
+  };
 
-  export import Posts = API.Posts;
-  export import ImagePost = API.ImagePost;
-  export import PostCreateParams = API.PostCreateParams;
-  export import PostUpdateParams = API.PostUpdateParams;
+  export {
+    type ChatThreads as ChatThreads,
+    type ChatThread as ChatThread,
+    type ChatThreadListParams as ChatThreadListParams,
+  };
 
-  export import CommunityLinks = API.CommunityLinks;
+  export {
+    Posts as Posts,
+    type ImagePost as ImagePost,
+    type PostCreateParams as PostCreateParams,
+    type PostUpdateParams as PostUpdateParams,
+  };
 
-  export import CommunityMembers = API.CommunityMembers;
-  export import CurrentCommunityMember = API.CurrentCommunityMember;
-  export import MemberDeactivated = API.MemberDeactivated;
-  export import CommunityMemberListParams = API.CommunityMemberListParams;
+  export { type CommunityLinks as CommunityLinks };
 
-  export import Cookies = API.Cookies;
-  export import CookiesDestroyed = API.CookiesDestroyed;
-  export import CookiesGenerated = API.CookiesGenerated;
+  export {
+    type CommunityMembers as CommunityMembers,
+    type CurrentCommunityMember as CurrentCommunityMember,
+    type MemberDeactivated as MemberDeactivated,
+    type CommunityMemberListParams as CommunityMemberListParams,
+  };
 
-  export import Courses = API.Courses;
+  export {
+    Cookies as Cookies,
+    type CookiesDestroyed as CookiesDestroyed,
+    type CookiesGenerated as CookiesGenerated,
+  };
 
-  export import Events = API.Events;
+  export { Courses as Courses };
 
-  export import FlaggedContents = API.FlaggedContents;
-  export import FlaggedContentCreateResponse = API.FlaggedContentCreateResponse;
-  export import FlaggedContentCreateParams = API.FlaggedContentCreateParams;
+  export { Events as Events };
 
-  export import HomePage = API.HomePage;
-  export import HomePageRetrieveParams = API.HomePageRetrieveParams;
+  export {
+    FlaggedContents as FlaggedContents,
+    type FlaggedContentCreateResponse as FlaggedContentCreateResponse,
+    type FlaggedContentCreateParams as FlaggedContentCreateParams,
+  };
 
-  export import InvitationLinks = API.InvitationLinks;
-  export import InvitationLinkJoinResponse = API.InvitationLinkJoinResponse;
+  export { HomePage as HomePage, type HomePageRetrieveParams as HomePageRetrieveParams };
 
-  export import LiveStreams = API.LiveStreams;
+  export {
+    InvitationLinks as InvitationLinks,
+    type InvitationLinkJoinResponse as InvitationLinkJoinResponse,
+  };
 
-  export import NotificationPreferences = API.NotificationPreferences;
-  export import MediumNotificationPreferences = API.MediumNotificationPreferences;
-  export import MediumNotificationPreferencesUpdate = API.MediumNotificationPreferencesUpdate;
-  export import NotificationPreferenceUpdateParams = API.NotificationPreferenceUpdateParams;
+  export { LiveStreams as LiveStreams };
 
-  export import Notifications = API.Notifications;
-  export import NewNotificationsCount = API.NewNotificationsCount;
-  export import Notification = API.Notification;
-  export import ResetNewNotificationsCount = API.ResetNewNotificationsCount;
-  export import NotificationListParams = API.NotificationListParams;
-  export import NotificationMarkAllAsReadParams = API.NotificationMarkAllAsReadParams;
+  export {
+    NotificationPreferences as NotificationPreferences,
+    type MediumNotificationPreferences as MediumNotificationPreferences,
+    type MediumNotificationPreferencesUpdate as MediumNotificationPreferencesUpdate,
+    type NotificationPreferenceUpdateParams as NotificationPreferenceUpdateParams,
+  };
 
-  export import Spaces = API.Spaces;
+  export {
+    type Notifications as Notifications,
+    type NewNotificationsCount as NewNotificationsCount,
+    type Notification as Notification,
+    type ResetNewNotificationsCount as ResetNewNotificationsCount,
+    type NotificationListParams as NotificationListParams,
+    type NotificationMarkAllAsReadParams as NotificationMarkAllAsReadParams,
+  };
 
-  export import Profile = API.Profile;
-  export import ProfileUpdateParams = API.ProfileUpdateParams;
+  export { type Spaces as Spaces };
 
-  export import Reactions = API.Reactions;
-  export import CreateReactionResponse = API.CreateReactionResponse;
-  export import ReactionCreateParams = API.ReactionCreateParams;
+  export { Profile as Profile, type ProfileUpdateParams as ProfileUpdateParams };
 
-  export import Comments = API.Comments;
+  export {
+    Reactions as Reactions,
+    type CreateReactionResponse as CreateReactionResponse,
+    type ReactionCreateParams as ReactionCreateParams,
+  };
 
-  export import Search = API.Search;
-  export import SearchResults = API.SearchResults;
-  export import SearchListParams = API.SearchListParams;
+  export { Comments as Comments };
 
-  export import Signup = API.Signup;
+  export { Search as Search, type SearchResults as SearchResults, type SearchListParams as SearchListParams };
 
-  export import SpaceMembers = API.SpaceMembers;
-  export import SpaceMemberMarkAsReadResponse = API.SpaceMemberMarkAsReadResponse;
+  export { Signup as Signup };
 
-  export import SpaceNotificationDetails = API.SpaceNotificationDetails;
-  export import SpaceNotificationDetailListParams = API.SpaceNotificationDetailListParams;
+  export {
+    SpaceMembers as SpaceMembers,
+    type SpaceMemberMarkAsReadResponse as SpaceMemberMarkAsReadResponse,
+  };
 
-  export import Comment = API.Comment;
-  export import Comments = API.Comments;
-  export import Posts = API.Posts;
-  export import ProfileUpdateResponse = API.ProfileUpdateResponse;
-  export import Space = API.Space;
-  export import UserLikes = API.UserLikes;
+  export {
+    type SpaceNotificationDetails as SpaceNotificationDetails,
+    type SpaceNotificationDetailListParams as SpaceNotificationDetailListParams,
+  };
+
+  export type Comment = API.Comment;
+  export type Comments = API.Comments;
+  export type Posts = API.Posts;
+  export type ProfileUpdateResponse = API.ProfileUpdateResponse;
+  export type Space = API.Space;
+  export type UserLikes = API.UserLikes;
 }
 
 export default HeadlessClientSDK;

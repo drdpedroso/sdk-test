@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as RoomsAPI from './rooms';
 
 export class Rooms extends APIResource {
   /**
@@ -150,7 +149,6 @@ export namespace RoomCreateParams {
   }
 }
 
-export namespace Rooms {
-  export import LiveRoom = RoomsAPI.LiveRoom;
-  export import RoomCreateParams = RoomsAPI.RoomCreateParams;
+export declare namespace Rooms {
+  export { type LiveRoom as LiveRoom, type RoomCreateParams as RoomCreateParams };
 }

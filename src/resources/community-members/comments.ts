@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as CommentsAPI from './comments';
 import * as Shared from '../shared';
 
 export class Comments extends APIResource {
@@ -43,6 +42,6 @@ export interface CommentListParams {
   per_page?: number;
 }
 
-export namespace Comments {
-  export import CommentListParams = CommentsAPI.CommentListParams;
+export declare namespace Comments {
+  export { type CommentListParams as CommentListParams };
 }

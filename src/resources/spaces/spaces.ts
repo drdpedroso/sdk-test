@@ -2,12 +2,15 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SpacesAPI from './spaces';
 import * as Shared from '../shared';
 import * as BookmarksAPI from './bookmarks';
+import { BookmarkListParams, Bookmarks, SpaceBookmarks } from './bookmarks';
 import * as HomeAPI from './home';
+import { Home } from './home';
 import * as PostsAPI from './posts';
+import { Post, PostCreateParams, PostDeleteResponse, PostListParams, Posts } from './posts';
 import * as EventsAPI from './events/events';
+import { Events } from './events/events';
 
 export class Spaces extends APIResource {
   posts: PostsAPI.Posts = new PostsAPI.Posts(this._client);
@@ -46,16 +49,29 @@ export class Spaces extends APIResource {
 
 export type Spaces = Array<Shared.Space>;
 
-export namespace Spaces {
-  export import Spaces = SpacesAPI.Spaces;
-  export import Posts = PostsAPI.Posts;
-  export import Post = PostsAPI.Post;
-  export import PostDeleteResponse = PostsAPI.PostDeleteResponse;
-  export import PostCreateParams = PostsAPI.PostCreateParams;
-  export import PostListParams = PostsAPI.PostListParams;
-  export import Events = EventsAPI.Events;
-  export import Bookmarks = BookmarksAPI.Bookmarks;
-  export import SpaceBookmarks = BookmarksAPI.SpaceBookmarks;
-  export import BookmarkListParams = BookmarksAPI.BookmarkListParams;
-  export import Home = HomeAPI.Home;
+Spaces.Posts = Posts;
+Spaces.Events = Events;
+Spaces.Bookmarks = Bookmarks;
+Spaces.Home = Home;
+
+export declare namespace Spaces {
+  export { type Spaces as Spaces };
+
+  export {
+    Posts as Posts,
+    type Post as Post,
+    type PostDeleteResponse as PostDeleteResponse,
+    type PostCreateParams as PostCreateParams,
+    type PostListParams as PostListParams,
+  };
+
+  export { Events as Events };
+
+  export {
+    Bookmarks as Bookmarks,
+    type SpaceBookmarks as SpaceBookmarks,
+    type BookmarkListParams as BookmarkListParams,
+  };
+
+  export { Home as Home };
 }

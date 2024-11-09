@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as RepliesAPI from './replies';
 import * as Shared from '../shared';
 
 export class Replies extends APIResource {
@@ -111,8 +110,10 @@ export interface ReplyListParams {
   sort?: 'oldest' | 'latest' | 'alphabetical' | 'likes' | 'latest_updated' | 'oldest_updated';
 }
 
-export namespace Replies {
-  export import ReplyDeleteResponse = RepliesAPI.ReplyDeleteResponse;
-  export import ReplyCreateParams = RepliesAPI.ReplyCreateParams;
-  export import ReplyListParams = RepliesAPI.ReplyListParams;
+export declare namespace Replies {
+  export {
+    type ReplyDeleteResponse as ReplyDeleteResponse,
+    type ReplyCreateParams as ReplyCreateParams,
+    type ReplyListParams as ReplyListParams,
+  };
 }

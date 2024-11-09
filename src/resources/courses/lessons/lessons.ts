@@ -2,9 +2,10 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as LessonsAPI from './lessons';
 import * as FilesAPI from './files';
+import { FileListParams, Files } from './files';
 import * as ProgressAPI from './progress';
+import { Progress as ProgressAPIProgress, ProgressUpdateParams, ProgressUpdateResponse } from './progress';
 
 export class Lessons extends APIResource {
   files: FilesAPI.Files = new FilesAPI.Files(this._client);
@@ -216,12 +217,17 @@ export namespace LessonFiles {
   }
 }
 
-export namespace Lessons {
-  export import Lesson = LessonsAPI.Lesson;
-  export import LessonFiles = LessonsAPI.LessonFiles;
-  export import Files = FilesAPI.Files;
-  export import FileListParams = FilesAPI.FileListParams;
-  export import Progress = ProgressAPI.Progress;
-  export import ProgressUpdateResponse = ProgressAPI.ProgressUpdateResponse;
-  export import ProgressUpdateParams = ProgressAPI.ProgressUpdateParams;
+Lessons.Files = Files;
+Lessons.Progress = ProgressAPIProgress;
+
+export declare namespace Lessons {
+  export { type Lesson as Lesson, type LessonFiles as LessonFiles };
+
+  export { Files as Files, type FileListParams as FileListParams };
+
+  export {
+    ProgressAPIProgress as Progress,
+    type ProgressUpdateResponse as ProgressUpdateResponse,
+    type ProgressUpdateParams as ProgressUpdateParams,
+  };
 }

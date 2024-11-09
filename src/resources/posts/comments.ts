@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as CommentsAPI from './comments';
 import * as Shared from '../shared';
 
 export class Comments extends APIResource {
@@ -111,8 +110,10 @@ export interface CommentListParams {
   sort?: 'oldest' | 'latest' | 'alphabetical' | 'likes' | 'latest_updated' | 'oldest_updated';
 }
 
-export namespace Comments {
-  export import CommentRemoveResponse = CommentsAPI.CommentRemoveResponse;
-  export import CommentCreateParams = CommentsAPI.CommentCreateParams;
-  export import CommentListParams = CommentsAPI.CommentListParams;
+export declare namespace Comments {
+  export {
+    type CommentRemoveResponse as CommentRemoveResponse,
+    type CommentCreateParams as CommentCreateParams,
+    type CommentListParams as CommentListParams,
+  };
 }

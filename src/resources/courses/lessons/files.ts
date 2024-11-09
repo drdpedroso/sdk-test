@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as FilesAPI from './files';
 import * as LessonsAPI from './lessons';
 
 export class Files extends APIResource {
@@ -49,6 +48,6 @@ export interface FileListParams {
   per_page?: number;
 }
 
-export namespace Files {
-  export import FileListParams = FilesAPI.FileListParams;
+export declare namespace Files {
+  export { type FileListParams as FileListParams };
 }

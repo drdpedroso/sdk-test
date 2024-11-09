@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as SpacesAPI from './spaces';
 import * as Shared from '../shared';
 
 export class Spaces extends APIResource {
@@ -57,7 +56,6 @@ export interface SpaceListParams {
   per_page?: number;
 }
 
-export namespace Spaces {
-  export import PaginatedSpaces = SpacesAPI.PaginatedSpaces;
-  export import SpaceListParams = SpacesAPI.SpaceListParams;
+export declare namespace Spaces {
+  export { type PaginatedSpaces as PaginatedSpaces, type SpaceListParams as SpaceListParams };
 }

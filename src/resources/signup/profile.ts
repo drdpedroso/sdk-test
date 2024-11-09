@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ProfileAPI from './profile';
 import * as Shared from '../shared';
 
 export class Profile extends APIResource {
@@ -78,6 +77,6 @@ export namespace ProfileUpdateParams {
   }
 }
 
-export namespace Profile {
-  export import ProfileUpdateParams = ProfileAPI.ProfileUpdateParams;
+export declare namespace Profile {
+  export { type ProfileUpdateParams as ProfileUpdateParams };
 }

@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as HomePageAPI from './home-page';
 import * as Shared from './shared';
 
 export class HomePage extends APIResource {
@@ -40,6 +39,6 @@ export interface HomePageRetrieveParams {
   sort?: 'latest' | 'popular' | 'oldest' | 'likes' | 'alphabetical' | 'new_activity';
 }
 
-export namespace HomePage {
-  export import HomePageRetrieveParams = HomePageAPI.HomePageRetrieveParams;
+export declare namespace HomePage {
+  export { type HomePageRetrieveParams as HomePageRetrieveParams };
 }

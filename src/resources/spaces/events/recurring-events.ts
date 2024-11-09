@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as RecurringEventsAPI from './recurring-events';
 
 export class RecurringEvents extends APIResource {
   /**
@@ -105,9 +104,11 @@ export interface RecurringEventRsvpParams {
   event_ids: Array<number>;
 }
 
-export namespace RecurringEvents {
-  export import RecurringEvents = RecurringEventsAPI.RecurringEvents;
-  export import RecurringEventRsvpResponse = RecurringEventsAPI.RecurringEventRsvpResponse;
-  export import RecurringEventListParams = RecurringEventsAPI.RecurringEventListParams;
-  export import RecurringEventRsvpParams = RecurringEventsAPI.RecurringEventRsvpParams;
+export declare namespace RecurringEvents {
+  export {
+    type RecurringEvents as RecurringEvents,
+    type RecurringEventRsvpResponse as RecurringEventRsvpResponse,
+    type RecurringEventListParams as RecurringEventListParams,
+    type RecurringEventRsvpParams as RecurringEventRsvpParams,
+  };
 }
