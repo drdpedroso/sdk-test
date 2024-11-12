@@ -220,25 +220,6 @@ export class HeadlessClientSDK extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  HeadlessClientSDKError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 HeadlessClientSDK.AdvancedSearch = AdvancedSearch;
 HeadlessClientSDK.Messages = Messages;
 HeadlessClientSDK.Posts = Posts;
@@ -256,7 +237,6 @@ HeadlessClientSDK.Comments = Comments;
 HeadlessClientSDK.Search = Search;
 HeadlessClientSDK.Signup = Signup;
 HeadlessClientSDK.SpaceMembers = SpaceMembers;
-
 export declare namespace HeadlessClientSDK {
   export type RequestOptions = Core.RequestOptions;
 
@@ -379,5 +359,22 @@ export declare namespace HeadlessClientSDK {
   export type Space = API.Space;
   export type UserLikes = API.UserLikes;
 }
+
+export { toFile, fileFromPath } from 'headless-client-sdk/uploads';
+export {
+  HeadlessClientSDKError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} from 'headless-client-sdk/error';
 
 export default HeadlessClientSDK;
