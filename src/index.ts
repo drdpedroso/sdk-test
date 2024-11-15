@@ -360,7 +360,7 @@ export declare namespace HeadlessClientSDK {
   export type UserLikes = API.UserLikes;
 }
 
-export { toFile, fileFromPath } from 'headless-client-sdk/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   HeadlessClientSDKError,
   APIError,
@@ -375,6 +375,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'headless-client-sdk/error';
+} from './error';
 
 export default HeadlessClientSDK;
