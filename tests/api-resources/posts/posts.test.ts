@@ -22,26 +22,13 @@ describe('resource posts', () => {
   test('create: required and optional params', async () => {
     const response = await client.posts.create({
       path_space_id: 0,
-      gallery_attributes: {
-        images_attributes: [
-          { id: 0, height: 0, signed_id: 'signed_id', width: 0 },
-          { id: 0, height: 0, signed_id: 'signed_id', width: 0 },
-          { id: 0, height: 0, signed_id: 'signed_id', width: 0 },
-        ],
-      },
+      gallery_attributes: { images_attributes: [{ id: 0, height: 0, signed_id: 'signed_id', width: 0 }] },
       is_comments_enabled: true,
       is_liking_enabled: true,
       slug: 'slug',
       body_space_id: 0,
       tiptap_body: {
-        body: {
-          content: [
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-          ],
-          type: 'type',
-        },
+        body: { content: [{ attrs: {}, marks: [{}], text: 'text', type: 'type' }], type: 'type' },
       },
     });
   });
@@ -60,26 +47,13 @@ describe('resource posts', () => {
   test('update: required and optional params', async () => {
     const response = await client.posts.update(0, {
       path_space_id: 0,
-      gallery_attributes: {
-        images_attributes: [
-          { id: 0, image: 'image', position: 0 },
-          { id: 0, image: 'image', position: 0 },
-          { id: 0, image: 'image', position: 0 },
-        ],
-      },
+      gallery_attributes: { images_attributes: [{ id: 0, image: 'image', position: 0 }] },
       is_comments_enabled: true,
       is_liking_enabled: true,
       slug: 'slug',
       body_space_id: 0,
       tiptap_body: {
-        body: {
-          content: [
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-          ],
-          type: 'type',
-        },
+        body: { content: [{ attrs: {}, marks: [{}], text: 'text', type: 'type' }], type: 'type' },
       },
     });
   });

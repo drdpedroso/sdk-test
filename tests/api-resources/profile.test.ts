@@ -36,33 +36,7 @@ describe('resource profile', () => {
             community_member_profile_fields_attributes: [
               {
                 id: 0,
-                community_member_choices_attributes: [
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                ],
-                profile_field_id: 0,
-                text: 'text',
-                textarea: 'textarea',
-              },
-              {
-                id: 0,
-                community_member_choices_attributes: [
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                ],
-                profile_field_id: 0,
-                text: 'text',
-                textarea: 'textarea',
-              },
-              {
-                id: 0,
-                community_member_choices_attributes: [
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                  { id: 0, _destroy: true, profile_field_choice_id: 0 },
-                ],
+                community_member_choices_attributes: [{ id: 0, _destroy: true, profile_field_choice_id: 0 }],
                 profile_field_id: 0,
                 text: 'text',
                 textarea: 'textarea',

@@ -39,7 +39,7 @@ describe('resource recurringEvents', () => {
   });
 
   test('rsvp: only required params', async () => {
-    const responsePromise = client.spaces.events.recurringEvents.rsvp(0, 0, { event_ids: [0, 0, 0] });
+    const responsePromise = client.spaces.events.recurringEvents.rsvp(0, 0, { event_ids: [0] });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -50,6 +50,6 @@ describe('resource recurringEvents', () => {
   });
 
   test('rsvp: required and optional params', async () => {
-    const response = await client.spaces.events.recurringEvents.rsvp(0, 0, { event_ids: [0, 0, 0] });
+    const response = await client.spaces.events.recurringEvents.rsvp(0, 0, { event_ids: [0] });
   });
 });

@@ -30,14 +30,7 @@ describe('resource posts', () => {
       slug: 'slug',
       body_space_id: 0,
       tiptap_body: {
-        body: {
-          content: [
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-            { attrs: {}, marks: [{}, {}, {}], text: 'text', type: 'type' },
-          ],
-          type: 'type',
-        },
+        body: { content: [{ attrs: {}, marks: [{}], text: 'text', type: 'type' }], type: 'type' },
       },
     });
   });
