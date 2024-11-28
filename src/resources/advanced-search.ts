@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as AdvancedSearchAPI from './advanced-search';
 
 export class AdvancedSearch extends APIResource {
   /**
@@ -274,7 +273,9 @@ export interface AdvancedSearchSearchParams {
     | 'mentions';
 }
 
-export namespace AdvancedSearch {
-  export import AdvancedSearchResults = AdvancedSearchAPI.AdvancedSearchResults;
-  export import AdvancedSearchSearchParams = AdvancedSearchAPI.AdvancedSearchSearchParams;
+export declare namespace AdvancedSearch {
+  export {
+    type AdvancedSearchResults as AdvancedSearchResults,
+    type AdvancedSearchSearchParams as AdvancedSearchSearchParams,
+  };
 }

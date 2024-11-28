@@ -2,9 +2,15 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as NotificationPreferencesAPI from './notification-preferences';
 import * as SpaceMembersAPI from './space-members';
+import { SpaceMemberNotificationPreferences, SpaceMembers } from './space-members';
 import * as SpacesAPI from './spaces';
+import {
+  MediumSpaceNotificationPreferencesUpdate,
+  MediumSpaceNotificationPreferencesUpdateAll,
+  SpaceUpdateParams,
+  Spaces,
+} from './spaces';
 
 export class NotificationPreferences extends APIResource {
   spaceMembers: SpaceMembersAPI.SpaceMembers = new SpaceMembersAPI.SpaceMembers(this._client);
@@ -83,14 +89,25 @@ export interface NotificationPreferenceUpdateParams {
     | 'new_course_content';
 }
 
-export namespace NotificationPreferences {
-  export import MediumNotificationPreferences = NotificationPreferencesAPI.MediumNotificationPreferences;
-  export import MediumNotificationPreferencesUpdate = NotificationPreferencesAPI.MediumNotificationPreferencesUpdate;
-  export import NotificationPreferenceUpdateParams = NotificationPreferencesAPI.NotificationPreferenceUpdateParams;
-  export import SpaceMembers = SpaceMembersAPI.SpaceMembers;
-  export import SpaceMemberNotificationPreferences = SpaceMembersAPI.SpaceMemberNotificationPreferences;
-  export import Spaces = SpacesAPI.Spaces;
-  export import MediumSpaceNotificationPreferencesUpdate = SpacesAPI.MediumSpaceNotificationPreferencesUpdate;
-  export import MediumSpaceNotificationPreferencesUpdateAll = SpacesAPI.MediumSpaceNotificationPreferencesUpdateAll;
-  export import SpaceUpdateParams = SpacesAPI.SpaceUpdateParams;
+NotificationPreferences.SpaceMembers = SpaceMembers;
+NotificationPreferences.Spaces = Spaces;
+
+export declare namespace NotificationPreferences {
+  export {
+    type MediumNotificationPreferences as MediumNotificationPreferences,
+    type MediumNotificationPreferencesUpdate as MediumNotificationPreferencesUpdate,
+    type NotificationPreferenceUpdateParams as NotificationPreferenceUpdateParams,
+  };
+
+  export {
+    SpaceMembers as SpaceMembers,
+    type SpaceMemberNotificationPreferences as SpaceMemberNotificationPreferences,
+  };
+
+  export {
+    Spaces as Spaces,
+    type MediumSpaceNotificationPreferencesUpdate as MediumSpaceNotificationPreferencesUpdate,
+    type MediumSpaceNotificationPreferencesUpdateAll as MediumSpaceNotificationPreferencesUpdateAll,
+    type SpaceUpdateParams as SpaceUpdateParams,
+  };
 }

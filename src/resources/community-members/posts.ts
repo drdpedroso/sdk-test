@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as PostsAPI from './posts';
 import * as Shared from '../shared';
 
 export class Posts extends APIResource {
@@ -43,6 +42,6 @@ export interface PostListParams {
   per_page?: number;
 }
 
-export namespace Posts {
-  export import PostListParams = PostsAPI.PostListParams;
+export declare namespace Posts {
+  export { type PostListParams as PostListParams };
 }

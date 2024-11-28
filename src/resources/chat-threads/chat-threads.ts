@@ -3,8 +3,8 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ChatThreadsAPI from './chat-threads';
 import * as UnreadChatThreadsAPI from './unread-chat-threads';
+import { UnreadChatThreadListResponse, UnreadChatThreads } from './unread-chat-threads';
 import * as ChatRoomMessagesAPI from '../messages/chat-room-messages';
 
 export class ChatThreads extends APIResource {
@@ -107,10 +107,17 @@ export interface ChatThreadListParams {
   per_page?: number;
 }
 
-export namespace ChatThreads {
-  export import ChatThread = ChatThreadsAPI.ChatThread;
-  export import ChatThreads = ChatThreadsAPI.ChatThreads;
-  export import ChatThreadListParams = ChatThreadsAPI.ChatThreadListParams;
-  export import UnreadChatThreads = UnreadChatThreadsAPI.UnreadChatThreads;
-  export import UnreadChatThreadListResponse = UnreadChatThreadsAPI.UnreadChatThreadListResponse;
+ChatThreads.UnreadChatThreads = UnreadChatThreads;
+
+export declare namespace ChatThreads {
+  export {
+    type ChatThread as ChatThread,
+    type ChatThreads as ChatThreads,
+    type ChatThreadListParams as ChatThreadListParams,
+  };
+
+  export {
+    UnreadChatThreads as UnreadChatThreads,
+    type UnreadChatThreadListResponse as UnreadChatThreadListResponse,
+  };
 }

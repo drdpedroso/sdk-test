@@ -4,14 +4,14 @@
 
 This library provides convenient access to the Headless Client SDK REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on docs.headless-client-sdk.com](https://docs.headless-client-sdk.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.headless-client-sdk.com](https://docs.headless-client-sdk.com). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/headless-client-sdk-node.git
+npm install git+ssh://git@github.com:drdpedroso/sdk-test.git
 ```
 
 > [!NOTE]
@@ -25,10 +25,10 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import HeadlessClientSDK from 'headless-client-sdk';
 
-const headlessClientSDK = new HeadlessClientSDK();
+const client = new HeadlessClientSDK();
 
 async function main() {
-  const bookmark = await headlessClientSDK.bookmarks.create({ bookmark_type: 'REPLACE_ME', record_id: NaN });
+  const bookmark = await client.bookmarks.create({ bookmark_type: 'post', record_id: 2 });
 
   console.log(bookmark.id);
 }
@@ -44,11 +44,11 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import HeadlessClientSDK from 'headless-client-sdk';
 
-const headlessClientSDK = new HeadlessClientSDK();
+const client = new HeadlessClientSDK();
 
 async function main() {
-  const params: HeadlessClientSDK.BookmarkCreateParams = { bookmark_type: 'REPLACE_ME', record_id: NaN };
-  const bookmark: HeadlessClientSDK.Bookmark = await headlessClientSDK.bookmarks.create(params);
+  const params: HeadlessClientSDK.BookmarkCreateParams = { bookmark_type: 'post', record_id: 2 };
+  const bookmark: HeadlessClientSDK.Bookmark = await client.bookmarks.create(params);
 }
 
 main();
@@ -65,8 +65,8 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const bookmark = await headlessClientSDK.bookmarks
-    .create({ bookmark_type: 'REPLACE_ME', record_id: NaN })
+  const bookmark = await client.bookmarks
+    .create({ bookmark_type: 'post', record_id: 2 })
     .catch(async (err) => {
       if (err instanceof HeadlessClientSDK.APIError) {
         console.log(err.status); // 400
@@ -105,12 +105,12 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   maxRetries: 0, // default is 2
 });
 
 // Or, configure per-request:
-await headlessClientSDK.bookmarks.create({ bookmark_type: 'REPLACE_ME', record_id: NaN }, {
+await client.bookmarks.create({ bookmark_type: 'post', record_id: 2 }, {
   maxRetries: 5,
 });
 ```
@@ -122,12 +122,12 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
 // Override per-request:
-await headlessClientSDK.bookmarks.create({ bookmark_type: 'REPLACE_ME', record_id: NaN }, {
+await client.bookmarks.create({ bookmark_type: 'post', record_id: 2 }, {
   timeout: 5 * 1000,
 });
 ```
@@ -146,16 +146,14 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const headlessClientSDK = new HeadlessClientSDK();
+const client = new HeadlessClientSDK();
 
-const response = await headlessClientSDK.bookmarks
-  .create({ bookmark_type: 'REPLACE_ME', record_id: NaN })
-  .asResponse();
+const response = await client.bookmarks.create({ bookmark_type: 'post', record_id: 2 }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: bookmark, response: raw } = await headlessClientSDK.bookmarks
-  .create({ bookmark_type: 'REPLACE_ME', record_id: NaN })
+const { data: bookmark, response: raw } = await client.bookmarks
+  .create({ bookmark_type: 'post', record_id: 2 })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(bookmark.id);
@@ -221,7 +219,7 @@ import HeadlessClientSDK from 'headless-client-sdk';
 ```
 
 To do the inverse, add `import "headless-client-sdk/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/headless-client-sdk-node/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/drdpedroso/sdk-test/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -257,13 +255,13 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
 // Override per-request:
-await headlessClientSDK.bookmarks.create(
-  { bookmark_type: 'REPLACE_ME', record_id: NaN },
+await client.bookmarks.create(
+  { bookmark_type: 'post', record_id: 2 },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
@@ -280,7 +278,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/headless-client-sdk-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/drdpedroso/sdk-test/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
@@ -288,8 +286,9 @@ TypeScript >= 4.5 is supported.
 
 The following runtimes are supported:
 
+- Web browsers (Up-to-date Chrome, Firefox, Safari, Edge, and more)
 - Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import HeadlessClientSDK from "npm:headless-client-sdk"`.
+- Deno v1.28.0 or higher.
 - Bun 1.0 or later.
 - Cloudflare Workers.
 - Vercel Edge Runtime.
@@ -299,3 +298,7 @@ The following runtimes are supported:
 Note that React Native is not supported at this time.
 
 If you are interested in other runtime environments, please open or upvote an issue on GitHub.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).

@@ -2,8 +2,8 @@
 
 export { Events } from './events';
 export {
-  RecurringEvents,
-  RecurringEventRsvpResponse,
-  RecurringEventListParams,
-  RecurringEventRsvpParams,
+  type RecurringEvents,
+  type RecurringEventRsvpResponse,
+  type RecurringEventListParams,
+  type RecurringEventRsvpParams,
 } from './recurring-events';

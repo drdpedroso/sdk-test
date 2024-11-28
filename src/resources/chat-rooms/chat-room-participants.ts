@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ChatRoomParticipantsAPI from './chat-room-participants';
 import * as ChatRoomsAPI from './chat-rooms';
 
 export class ChatRoomParticipants extends APIResource {
@@ -48,6 +47,6 @@ export interface ChatRoomParticipantUpdateParams {
   muted?: boolean;
 }
 
-export namespace ChatRoomParticipants {
-  export import ChatRoomParticipantUpdateParams = ChatRoomParticipantsAPI.ChatRoomParticipantUpdateParams;
+export declare namespace ChatRoomParticipants {
+  export { type ChatRoomParticipantUpdateParams as ChatRoomParticipantUpdateParams };
 }

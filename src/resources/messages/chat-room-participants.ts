@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ChatRoomParticipantsAPI from './chat-room-participants';
 
 export class ChatRoomParticipants extends APIResource {
   /**
@@ -96,7 +95,9 @@ export interface ChatRoomParticipantListParams {
   per_page?: number;
 }
 
-export namespace ChatRoomParticipants {
-  export import ChatRoomParticipants = ChatRoomParticipantsAPI.ChatRoomParticipants;
-  export import ChatRoomParticipantListParams = ChatRoomParticipantsAPI.ChatRoomParticipantListParams;
+export declare namespace ChatRoomParticipants {
+  export {
+    type ChatRoomParticipants as ChatRoomParticipants,
+    type ChatRoomParticipantListParams as ChatRoomParticipantListParams,
+  };
 }

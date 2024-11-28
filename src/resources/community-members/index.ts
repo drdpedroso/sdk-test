@@ -1,7 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { CommentListParams, Comments } from './comments';
-export { CommunityMembers, CommunityMemberListParams } from './community-members';
-export { PaginatedSpaces, SpaceListParams, Spaces } from './spaces';
-export { PostListParams, Posts } from './posts';
-export { PublicProfile, PublicProfileResource } from './public-profile';
+export { Comments, type CommentListParams } from './comments';
+export { Posts, type PostListParams } from './posts';
+export { PublicProfileResource, type PublicProfile } from './public-profile';
+export { Spaces, type PaginatedSpaces, type SpaceListParams } from './spaces';
+export {
+  type CommunityMembers,
+  type CurrentCommunityMember,
+  type MemberDeactivated,
+  type CommunityMemberListParams,
+} from './community-members';

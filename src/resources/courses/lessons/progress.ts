@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as ProgressAPI from './progress';
 
 export class Progress extends APIResource {
   /**
@@ -29,7 +28,9 @@ export interface ProgressUpdateParams {
   status: 'incomplete' | 'completed';
 }
 
-export namespace Progress {
-  export import ProgressUpdateResponse = ProgressAPI.ProgressUpdateResponse;
-  export import ProgressUpdateParams = ProgressAPI.ProgressUpdateParams;
+export declare namespace Progress {
+  export {
+    type ProgressUpdateResponse as ProgressUpdateResponse,
+    type ProgressUpdateParams as ProgressUpdateParams,
+  };
 }

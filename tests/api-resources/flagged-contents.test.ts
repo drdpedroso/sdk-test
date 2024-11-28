@@ -3,18 +3,18 @@
 import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource flaggedContents', () => {
   test('create: only required params', async () => {
-    const responsePromise = headlessClientSDK.flaggedContents.create({
+    const responsePromise = client.flaggedContents.create({
       flagged_content: {
         flagged_contentable_id: 0,
-        flagged_contentable_type: 'string',
-        reported_reason_type: 'string',
+        flagged_contentable_type: 'flagged_contentable_type',
         reported_reason_body: 'harassment',
+        reported_reason_type: 'reported_reason_type',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -27,12 +27,12 @@ describe('resource flaggedContents', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await headlessClientSDK.flaggedContents.create({
+    const response = await client.flaggedContents.create({
       flagged_content: {
         flagged_contentable_id: 0,
-        flagged_contentable_type: 'string',
-        reported_reason_type: 'string',
+        flagged_contentable_type: 'flagged_contentable_type',
         reported_reason_body: 'harassment',
+        reported_reason_type: 'reported_reason_type',
       },
     });
   });

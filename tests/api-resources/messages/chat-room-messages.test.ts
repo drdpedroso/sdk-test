@@ -3,13 +3,13 @@
 import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource chatRoomMessages', () => {
   test('create', async () => {
-    const responsePromise = headlessClientSDK.messages.chatRoomMessages.create('string');
+    const responsePromise = client.messages.chatRoomMessages.create('chat_room_uuid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,23 +22,23 @@ describe('resource chatRoomMessages', () => {
   test('create: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomMessages.create('string', { path: '/_stainless_unknown_path' }),
+      client.messages.chatRoomMessages.create('chat_room_uuid', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('create: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomMessages.create(
-        'string',
-        { body: 'string', rich_text_body: {} },
+      client.messages.chatRoomMessages.create(
+        'chat_room_uuid',
+        { body: 'body', rich_text_body: {} },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('retrieve', async () => {
-    const responsePromise = headlessClientSDK.messages.chatRoomMessages.retrieve('string', 'string');
+    const responsePromise = client.messages.chatRoomMessages.retrieve('chat_room_uuid', 'id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -51,14 +51,12 @@ describe('resource chatRoomMessages', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomMessages.retrieve('string', 'string', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.messages.chatRoomMessages.retrieve('chat_room_uuid', 'id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('update', async () => {
-    const responsePromise = headlessClientSDK.messages.chatRoomMessages.update('string', 'string');
+    const responsePromise = client.messages.chatRoomMessages.update('chat_room_uuid', 'id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -71,26 +69,24 @@ describe('resource chatRoomMessages', () => {
   test('update: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomMessages.update('string', 'string', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.messages.chatRoomMessages.update('chat_room_uuid', 'id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('update: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomMessages.update(
-        'string',
-        'string',
-        { body: 'string', rich_text_body: {} },
+      client.messages.chatRoomMessages.update(
+        'chat_room_uuid',
+        'id',
+        { body: 'body', rich_text_body: {} },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('list', async () => {
-    const responsePromise = headlessClientSDK.messages.chatRoomMessages.list('string');
+    const responsePromise = client.messages.chatRoomMessages.list('chat_room_uuid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -103,15 +99,15 @@ describe('resource chatRoomMessages', () => {
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomMessages.list('string', { path: '/_stainless_unknown_path' }),
+      client.messages.chatRoomMessages.list('chat_room_uuid', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomMessages.list(
-        'string',
+      client.messages.chatRoomMessages.list(
+        'chat_room_uuid',
         { page: 0, per_page: 0 },
         { path: '/_stainless_unknown_path' },
       ),
@@ -119,7 +115,7 @@ describe('resource chatRoomMessages', () => {
   });
 
   test('delete', async () => {
-    const responsePromise = headlessClientSDK.messages.chatRoomMessages.delete('string', 'string');
+    const responsePromise = client.messages.chatRoomMessages.delete('chat_room_uuid', 'id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -132,9 +128,7 @@ describe('resource chatRoomMessages', () => {
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.messages.chatRoomMessages.delete('string', 'string', {
-        path: '/_stainless_unknown_path',
-      }),
+      client.messages.chatRoomMessages.delete('chat_room_uuid', 'id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(HeadlessClientSDK.NotFoundError);
   });
 });

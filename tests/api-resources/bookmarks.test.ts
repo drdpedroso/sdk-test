@@ -3,13 +3,13 @@
 import HeadlessClientSDK from 'headless-client-sdk';
 import { Response } from 'node-fetch';
 
-const headlessClientSDK = new HeadlessClientSDK({
+const client = new HeadlessClientSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource bookmarks', () => {
   test('create: only required params', async () => {
-    const responsePromise = headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 0 });
+    const responsePromise = client.bookmarks.create({ bookmark_type: 'post', record_id: 0 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,11 +20,11 @@ describe('resource bookmarks', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await headlessClientSDK.bookmarks.create({ bookmark_type: 'post', record_id: 0 });
+    const response = await client.bookmarks.create({ bookmark_type: 'post', record_id: 0 });
   });
 
   test('list', async () => {
-    const responsePromise = headlessClientSDK.bookmarks.list();
+    const responsePromise = client.bookmarks.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -36,7 +36,7 @@ describe('resource bookmarks', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(headlessClientSDK.bookmarks.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.bookmarks.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       HeadlessClientSDK.NotFoundError,
     );
   });
@@ -44,7 +44,7 @@ describe('resource bookmarks', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      headlessClientSDK.bookmarks.list(
+      client.bookmarks.list(
         { bookmark_type: 'post', page: 0, per_page: 0 },
         { path: '/_stainless_unknown_path' },
       ),
@@ -52,7 +52,7 @@ describe('resource bookmarks', () => {
   });
 
   test('delete', async () => {
-    const responsePromise = headlessClientSDK.bookmarks.delete(0);
+    const responsePromise = client.bookmarks.delete(0);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -64,7 +64,7 @@ describe('resource bookmarks', () => {
 
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(headlessClientSDK.bookmarks.delete(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.bookmarks.delete(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
       HeadlessClientSDK.NotFoundError,
     );
   });

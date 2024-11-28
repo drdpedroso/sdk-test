@@ -177,10 +177,14 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/community-members/community-members.ts">CommunityMembers</a></code>
+- <code><a href="./src/resources/community-members/community-members.ts">CurrentCommunityMember</a></code>
+- <code><a href="./src/resources/community-members/community-members.ts">MemberDeactivated</a></code>
 
 Methods:
 
+- <code title="get /api/headless/v1/community_member">client.communityMembers.<a href="./src/resources/community-members/community-members.ts">retrieve</a>() -> CurrentCommunityMember</code>
 - <code title="get /api/headless/v1/community_members">client.communityMembers.<a href="./src/resources/community-members/community-members.ts">list</a>({ ...params }) -> CommunityMembers</code>
+- <code title="delete /api/headless/v1/community_member/deactivate">client.communityMembers.<a href="./src/resources/community-members/community-members.ts">deactivate</a>() -> MemberDeactivated</code>
 
 ## Comments
 
@@ -213,18 +217,6 @@ Types:
 Methods:
 
 - <code title="get /api/headless/v1/community_members/{community_member_id}/public_profile">client.communityMembers.publicProfile.<a href="./src/resources/community-members/public-profile.ts">retrieve</a>(communityMemberId) -> PublicProfile</code>
-
-# CommunityMember
-
-Types:
-
-- <code><a href="./src/resources/community-member.ts">CurrentCommunityMember</a></code>
-- <code><a href="./src/resources/community-member.ts">MemberDeactivated</a></code>
-
-Methods:
-
-- <code title="get /api/headless/v1/community_member">client.communityMember.<a href="./src/resources/community-member.ts">retrieve</a>() -> CurrentCommunityMember</code>
-- <code title="delete /api/headless/v1/community_member/deactivate">client.communityMember.<a href="./src/resources/community-member.ts">deactivate</a>() -> MemberDeactivated</code>
 
 # Cookies
 

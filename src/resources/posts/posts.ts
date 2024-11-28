@@ -2,10 +2,12 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as PostsAPI from './posts';
 import * as CommentsAPI from './comments';
+import { CommentCreateParams, CommentListParams, CommentRemoveResponse, Comments } from './comments';
 import * as PostFollowersAPI from './post-followers';
+import { PostFollowerCreateResponse, PostFollowerDeleteResponse, PostFollowers } from './post-followers';
 import * as UserLikesAPI from './user-likes';
+import { UserLikeCreateResponse, UserLikeDeleteResponse, UserLikeListParams, UserLikes } from './user-likes';
 
 export class Posts extends APIResource {
   comments: CommentsAPI.Comments = new CommentsAPI.Comments(this._client);
@@ -501,19 +503,34 @@ export namespace PostUpdateParams {
   }
 }
 
-export namespace Posts {
-  export import ImagePost = PostsAPI.ImagePost;
-  export import PostCreateParams = PostsAPI.PostCreateParams;
-  export import PostUpdateParams = PostsAPI.PostUpdateParams;
-  export import Comments = CommentsAPI.Comments;
-  export import CommentRemoveResponse = CommentsAPI.CommentRemoveResponse;
-  export import CommentCreateParams = CommentsAPI.CommentCreateParams;
-  export import CommentListParams = CommentsAPI.CommentListParams;
-  export import PostFollowers = PostFollowersAPI.PostFollowers;
-  export import PostFollowerCreateResponse = PostFollowersAPI.PostFollowerCreateResponse;
-  export import PostFollowerDeleteResponse = PostFollowersAPI.PostFollowerDeleteResponse;
-  export import UserLikes = UserLikesAPI.UserLikes;
-  export import UserLikeCreateResponse = UserLikesAPI.UserLikeCreateResponse;
-  export import UserLikeDeleteResponse = UserLikesAPI.UserLikeDeleteResponse;
-  export import UserLikeListParams = UserLikesAPI.UserLikeListParams;
+Posts.Comments = Comments;
+Posts.PostFollowers = PostFollowers;
+Posts.UserLikes = UserLikes;
+
+export declare namespace Posts {
+  export {
+    type ImagePost as ImagePost,
+    type PostCreateParams as PostCreateParams,
+    type PostUpdateParams as PostUpdateParams,
+  };
+
+  export {
+    Comments as Comments,
+    type CommentRemoveResponse as CommentRemoveResponse,
+    type CommentCreateParams as CommentCreateParams,
+    type CommentListParams as CommentListParams,
+  };
+
+  export {
+    PostFollowers as PostFollowers,
+    type PostFollowerCreateResponse as PostFollowerCreateResponse,
+    type PostFollowerDeleteResponse as PostFollowerDeleteResponse,
+  };
+
+  export {
+    UserLikes as UserLikes,
+    type UserLikeCreateResponse as UserLikeCreateResponse,
+    type UserLikeDeleteResponse as UserLikeDeleteResponse,
+    type UserLikeListParams as UserLikeListParams,
+  };
 }
